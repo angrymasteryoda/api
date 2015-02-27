@@ -1,5 +1,6 @@
 package com.michael.api;
 
+import com.michael.api.json.JSONArray;
 import com.michael.api.json.JSONObject;
 
 import java.util.Iterator;
@@ -12,14 +13,23 @@ import java.util.Iterator;
 public class Tester {
 	public static void main( String[] args ){
 		JSONObject json = new JSONObject();
-		json.put( "test", "true" );
-		json.put( "test2", "true" );
-		json.put( "test3", "true" );
 
-		Iterator<String> itr = json.keys();
-		while( itr.hasNext() ){
-			IO.println( itr.next() );
-		}
+
+		int[] ints = {1,2,3,4,5};
+		JSONArray jsonarr = new JSONArray( ints );
+
+//		jsonarr.put( 1 );
+//		jsonarr.put( 2.012 );
+//		jsonarr.put( true );
+//		jsonarr.put( "test" );
+
+		json.put( "arr", jsonarr );
+		json.put( "test", "true" );
+		json.put( "test2", 1 );
+		json.put( "test3", 2.12 );
+		json.put( "test4", true );
+
+		IO.println( json );
 
 	}
 }
