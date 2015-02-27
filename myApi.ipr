@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactManager">
+    <artifact type="jar" name="myApi:jar">
+      <output-path>$PROJECT_DIR$/out/artifacts/myApi_jar</output-path>
+      <root id="archive" name="myApi.jar">
+        <element id="module-output" name="myApi" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/lib/mail.jar" path-in-jar="/" />
+      </root>
+    </artifact>
+  </component>
   <component name="CompilerConfiguration">
     <option name="DEFAULT_COMPILER" value="Javac" />
     <resourceExtensions />
