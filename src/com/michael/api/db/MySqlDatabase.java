@@ -100,19 +100,30 @@ public class MySqlDatabase {
 		}
 	}
 
-	public void createTable( String query ) {
-		createTable( query, false, "" );
+	/**
+	 * Create a table with a query
+	 * @param query string of table create query
+	 * @return true if created
+	 */
+	public boolean createTable( String query ) {
+		return createTable( query, false, "" );
 	}
 
-	public void createTable( String query, boolean checkFirst, String table ) {
+	/**
+	 * Create a table with a query
+	 * @param query string of table create query
+	 * @param checkFirst check if table exists first
+	 * @param table table name
+	 * @return
+	 */
+	public boolean createTable( String query, boolean checkFirst, String table ) {
 		if ( query.equals( "" ) || ( checkFirst && table.equals( "" ) ) ) {
-			return;
+			return false;
 		}
 
 		if ( checkFirst ) {
 			if ( checkTableExists( table ) ) {
-//				Main.Pl( "Table already exists" );
-				return;
+				return false;
 			}
 		}
 		Connection connection = getConnection();
@@ -122,11 +133,11 @@ public class MySqlDatabase {
 			state.executeUpdate( "FLUSH TABLES" );
 			state.close();
 			connection.close();
+			return true;
 		} catch ( SQLException e ) {
-
+			e.printStackTrace();
+			return false;
 		}
-
-
 	}
 
 	/**
