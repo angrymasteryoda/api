@@ -1,9 +1,14 @@
 package com.michael.api;
 
 import com.michael.api.IO.IO;
+import com.michael.api.db.MongoDatabase;
 import com.michael.api.db.MySqlDatabase;
 import com.michael.api.json.JSONArray;
 import com.michael.api.json.JSONObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBObject;
+import com.sun.org.apache.bcel.internal.generic.DMUL;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -16,20 +21,7 @@ import java.sql.Statement;
  */
 public class Tester {
 	public static void main( String[] args ) throws Exception{
-		MySqlDatabase db = new MySqlDatabase( "jdbc:mysql://localhost:3306/rcc", "michael", "mrisher", "local" );
-		Connection conn = db.getConnection();
-		Statement state = conn.createStatement();
-		ResultSet res = null;
-		res = state.executeQuery( "SELECT * FROM news_header" );
-
-		while ( res.next() ){
-			IO.println( res.getInt( "id" ) );
-		}
-
-		res.close();
-		state.close();
-		conn.close();
-
-
+		MongoDatabase mongo = new MongoDatabase( "localhost", "test" );
+		mongo.initConnection();
 	}
 }

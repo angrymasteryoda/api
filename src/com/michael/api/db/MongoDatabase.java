@@ -1,9 +1,9 @@
 package com.michael.api.db;
 
-import com.mongodb.DB;
-import com.mongodb.MongoClient;
+import com.mongodb.*;
 
 import java.net.UnknownHostException;
+import java.util.Arrays;
 
 /**
  * Created by: Michael Risher
@@ -12,32 +12,41 @@ import java.net.UnknownHostException;
  */
 public class MongoDatabase {
 	private String host;
-	private String db;
+	private String database;
 	private int port;
 	private String user;
 	private String pass;
+	private DB db;
 
-	public MongoDatabase( String host, String db, int port, String user, String pass ) {
+	public MongoDatabase( String host, String database, int port, String user, String pass ) {
 		this.host = host;
-		this.db = db;
+		this.database = database;
 		this.port = port;
 		this.user = user;
 		this.pass = pass;
 	}
 
-	public MongoDatabase( String host, String db ) {
-		this.host = host;
-		this.db = db;
+	public MongoDatabase( String host, String database ) {
+		this( host, database, 27017, null, null );
 	}
 //todo finish this
-	public DB initConnection(){
+	public void initConnection(){
 		try {
-			MongoClient mongo =  new MongoClient( host );
-			return mongo.getDB( db );
+			MongoClient mongo = null;
+			if ( user == null && pass == null ) {
+				mongo =  new MongoClient( new ServerAddress( host, port ) );
+			} else {
+				MongoCredential credential = MongoCredential.createCredential( user, database, pass.toCharArray() );
+				mongo = new MongoClient( new ServerAddress( host, port ), Arrays.asList( credential ) );
+			}
+			this.db = mongo.getDB( database );
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
-			return null;
 		}
+	}
+
+	public DBCollection getCollection( String collection ){
+		return db.getCollection( collection );
 	}
 
 	public String getHost() {
@@ -48,12 +57,12 @@ public class MongoDatabase {
 		this.host = host;
 	}
 
-	public String getDb() {
-		return db;
+	public String getDatabase() {
+		return database;
 	}
 
-	public void setDb( String db ) {
-		this.db = db;
+	public void setDatabase( String database ) {
+		this.database = database;
 	}
 
 	public String getUser() {
@@ -70,5 +79,17 @@ public class MongoDatabase {
 
 	public void setPass( String pass ) {
 		this.pass = pass;
+	}
+
+	public DB db() {
+		return db;
+	}
+
+	public int getPort() {
+		return port;
+	}
+
+	public void setPort( int port ) {
+		this.port = port;
 	}
 }

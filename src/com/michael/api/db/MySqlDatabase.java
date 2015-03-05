@@ -185,4 +185,20 @@ public class MySqlDatabase {
 	public void setPassword( String password ) {
 		this.password = password;
 	}
+
+	/* example
+	MySqlDatabase db = new MySqlDatabase( "jdbc:mysql://localhost:3306/rcc", "michael", "password", "local" );
+		Connection conn = db.getConnection();
+		Statement state = conn.createStatement();
+		ResultSet res = null;
+		res = state.executeQuery( "SELECT * FROM news_header" );
+
+		while ( res.next() ){
+			IO.println( res.getInt( "id" ) );
+		}
+
+		res.close();
+		state.close();
+		conn.close();
+	 */
 }
