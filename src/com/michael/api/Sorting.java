@@ -23,4 +23,36 @@ public class Sorting {
 
 		}
 	}
+
+	public static void quickSort( int[] array, int start, int end ){
+		int i = start; //left -right scan index
+		int k = end; // right -left scan index
+
+		if ( end - start >= 1 ) { //make sure there is 2 or more elements
+			int pivot = array[start];
+
+			while ( k > i ){ //while the scanning indexs have not meet
+				while ( array[i] <= pivot && i <+ end && k > i ) { // form the left look for first element greater than pivot
+					i++;
+				}
+				while ( array[k] > pivot && k >= start && k >= i ){ //from the right look for the first elem not greater than pivot
+					k--;
+				}
+				if ( k > i ) { // if the left scan index is still smaller than right index, swap the elems
+					swap( array, i, k );
+				}
+			}
+			swap( array, start, k ); //after indices have crossed swap the last elem in the left partition with pivot
+			quickSort( array, start, k - 1 ); // quicksort the left part
+			quickSort( array, k + 1, end ); //quicksort the right part
+		} else {
+			return; //its sorted
+		}
+	}
+
+	private static void swap( int array[], int index1, int index2 ) {
+		int temp = array[index1];
+		array[index1] = array[index2];
+		array[index2] = temp;
+	}
 }

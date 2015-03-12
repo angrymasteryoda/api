@@ -33,11 +33,27 @@ public class IO {
 	}
 
 	/**
+	 * get an inputstream from a file
+	 * @param path file path
+	 * @return inputstream or null if doenst exist
+	 */
+	public static InputStream readFile( String path ){
+		InputStream in;
+		try{
+			in = new FileInputStream( path );
+			return in;
+		} catch ( IOException e ){
+			Logger.getLogger(IO.class.getName()).log(Level.SEVERE, "Could not read the File", e);
+		}
+		return null;
+	}
+
+	/**
 	 * reads the content of a text file
 	 * @param fileName
 	 * @return content by line
 	 */
-	public static ArrayList<String> readFromFile(String fileName){
+	public static ArrayList<String> readFromFileIntoArray( String fileName ){
 		ArrayList<String> contents = new ArrayList<String>();
 		BufferedReader br = null;
 		try{

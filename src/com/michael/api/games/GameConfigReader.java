@@ -17,7 +17,7 @@ public class GameConfigReader {
 	 * @param getValuesOnly will only get the value after the colon
 	 */
 	public String[] readConfig( String fileName, boolean getValuesOnly ) {
-		ArrayList<String> fileContents = IO.readFromFile( fileName );
+		ArrayList<String> fileContents = IO.readFromFileIntoArray( fileName );
 		int lines = 0;
 		for ( int i = 0; i < fileContents.size(); i++ ) {
 			if ( !fileContents.get( i ).startsWith( "#" ) ) {

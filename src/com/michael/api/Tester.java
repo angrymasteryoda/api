@@ -5,6 +5,7 @@ import com.michael.api.db.MongoDatabase;
 import com.michael.api.db.MySqlDatabase;
 import com.michael.api.json.JSONArray;
 import com.michael.api.json.JSONObject;
+import com.michael.api.json.JSONReader;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
@@ -21,7 +22,8 @@ import java.sql.Statement;
  */
 public class Tester {
 	public static void main( String[] args ) throws Exception{
-		MongoDatabase mongo = new MongoDatabase( "localhost", "test" );
-		mongo.initConnection();
+		JSONReader jr = new JSONReader( "{'test':2}");
+//		MongoDatabase mongo = new MongoDatabase( "localhost", "test" );
+//		mongo.initConnection();
 	}
 }
