@@ -77,7 +77,7 @@ public class Encoder {
 
 	/**
 	 * takes the input and encrypts into md5 hash
-	 *
+	 * @deprecated 4/27/2015
 	 * @param par1str
 	 * @return md5
 	 */

@@ -22,7 +22,7 @@ import java.sql.Statement;
  */
 public class Tester {
 	public static void main( String[] args ) throws Exception{
-		JSONReader jr = new JSONReader( "{'test':2}");
+//		JSONReader jr = new JSONReader( "{'test':2}");
 //		MongoDatabase mongo = new MongoDatabase( "localhost", "test" );
 //		mongo.initConnection();
 	}
