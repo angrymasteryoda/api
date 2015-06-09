@@ -19,6 +19,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.HashMap;
 
 /**
  * Created By: Michael Risher
@@ -26,27 +27,20 @@ import java.sql.Statement;
  * Time: 4:36 PM
  */
 public class Tester {
-	public static void main( String[] args ) throws Exception{
-		MSplashScreen splash = new MSplashScreen( new URL( "http://www.lessons4living.com/images/penclchk.gif" ),
-			true,
-			true,
-			false,
-			"version",
-			null,
-			Color.red,
-			new BackForeColor( 0xff0000, 0x00ff00 )
-		);
-		splash.setIndeterminate( true );
-		splash.on();
+	public static void main( String[] args ) throws Exception {
+//		JSONObject jr = new JSONObject( new JSONReader( "{'test':[1,2,3,4]}" ) );
+//		IO.println( jr.get( "test" ) );
 
-		Thread.sleep( 1000l );
-		splash.setProgress( "test" );
-		Thread.sleep( 1000l );
-		splash.setProgress( "testas" );
-		Thread.sleep( 3000l );
-		splash.off();
-//		JSONReader jr = new JSONReader( "{'test':2}");
-//		MongoDatabase mongo = new MongoDatabase( "localhost", "test" );
-//		mongo.initConnection();
+		HashMap<String, Object> map = new HashMap<>();
+		map.put( "port", "3306" );
+		map.put( "username", "root" );
+		map.put( "host", "localhost" );
+		map.put( "dbName", "" );
+		map.put( "name", "Localhost" );
+		map.put( "password", "uTzjKyYc42+AJteqT98VxA==" );
+		JSONArray array = new JSONArray(  );
+		array.put( map );
+		IO.println( array );
+
 	}
 }
