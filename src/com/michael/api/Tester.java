@@ -30,17 +30,5 @@ public class Tester {
 	public static void main( String[] args ) throws Exception {
 //		JSONObject jr = new JSONObject( new JSONReader( "{'test':[1,2,3,4]}" ) );
 //		IO.println( jr.get( "test" ) );
-
-		HashMap<String, Object> map = new HashMap<>();
-		map.put( "port", "3306" );
-		map.put( "username", "root" );
-		map.put( "host", "localhost" );
-		map.put( "dbName", "" );
-		map.put( "name", "Localhost" );
-		map.put( "password", "uTzjKyYc42+AJteqT98VxA==" );
-		JSONArray array = new JSONArray(  );
-		array.put( map );
-		IO.println( array );
-
 	}
 }
