@@ -1,6 +1,7 @@
 package com.michael.api;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -67,6 +68,24 @@ public class Time {
 	public String getSYSPrint() {
 		setToSystemTime();
 		return toString();
+	}
+
+	/**
+	 * get the current UNIX timestamp
+	 * @return timestamp
+	 */
+	public static long getStaticUnix(){
+		return System.currentTimeMillis() / 1000L;
+	}
+
+	/**
+	 * Converts Unix time to Calendar instance.
+	 * @return calendar object
+	 */
+	public static Calendar unixToCalendar(long unixTime){
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTimeInMillis(unixTime);
+		return calendar;
 	}
 
 	public int getHour() {
