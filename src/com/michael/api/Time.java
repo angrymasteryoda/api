@@ -83,6 +83,7 @@ public class Time {
 	 * @return calendar object
 	 */
 	public static Calendar unixToCalendar(long unixTime){
+		unixTime *= 1000;
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTimeInMillis(unixTime);
 		return calendar;
