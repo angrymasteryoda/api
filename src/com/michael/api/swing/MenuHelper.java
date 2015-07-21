@@ -26,6 +26,18 @@ public class MenuHelper {
 		return createMenuItem( menu, type, text, command, null, acceleratorKey, toolTip, action );
 	}
 
+	/**
+	 * Create a menu item and add it to menu
+	 * @param menu menu to add item to
+	 * @param type type of menu
+	 * @param text displayed text
+	 * @param command the action command string
+	 * @param image icon
+	 * @param acceleratorKey shortcut key
+	 * @param toolTip string for tooltip
+	 * @param action action listener
+	 * @return menu item created
+	 */
 	public static JMenuItem createMenuItem( JMenu menu, int type, String text, String command, ImageIcon image, int acceleratorKey, String toolTip, ActionListener action ) {
 		JMenuItem item;
 
@@ -59,5 +71,13 @@ public class MenuHelper {
 
 		menu.add( item );
 		return item;
+	}
+
+	/**
+	 * Create a separator in the menu
+	 * @param menu menu to put separator into
+	 */
+	public static void createMenuSeparator( JMenu menu ){
+		menu.addSeparator();
 	}
 }
