@@ -70,6 +70,12 @@ public class Time {
 		return toString();
 	}
 
+	public static String mkTime(){
+		SimpleDateFormat f = new SimpleDateFormat( "HH:mm:ss" );
+		String time = f.format( System.currentTimeMillis() );
+		return time;
+	}
+
 	/**
 	 * get the current UNIX timestamp
 	 * @return timestamp
