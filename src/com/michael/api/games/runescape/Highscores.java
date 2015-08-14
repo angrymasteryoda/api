@@ -1,6 +1,7 @@
 package com.michael.api.games.runescape;
 
 import com.michael.api.Numbers;
+import com.michael.api.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,8 +21,8 @@ public class Highscores {
 	public final int PRINT_COMPARISON_XP = 1;
 	public final int PRINT_COMPARISON_RANK = 2;
 
-	private final int NUMBER_OF_SKILLS = 26;
-	private final int NUMBER_OF_MINIGAMES = 14;
+	public final int NUMBER_OF_SKILLS = 27;
+	public final int NUMBER_OF_MINIGAMES = 14;
 
 	public final int COMPARE_ARRAY_SIZE = NUMBER_OF_SKILLS + NUMBER_OF_MINIGAMES;
 
@@ -29,7 +30,7 @@ public class Highscores {
 	private String name;
 	private String name2;
 
-	private final String skillNames[] = {
+	public final String skillNames[] = {
 			"Overall      ",
 			"Attack       ",
 			"Defence      ",
@@ -56,6 +57,7 @@ public class Highscores {
 			"Construction ",
 			"Summoning    ",
 			"Dungeoneering",
+			"Divination   ",
 			"Bounty Hunters      ",
 			"Bounty Hunter Rogues",
 			"Dominion Tower      ",
@@ -331,6 +333,16 @@ public class Highscores {
 		} else
 			Logger.getLogger( Highscores.class.getName() ).log( Level.SEVERE, "Mode entered incorrect use PRINT_COMPARISON consants" );
 		return null;
+	}
+
+	public JSONObject getjson(){
+		getScoresFromWeb();
+		JSONObject jo = new JSONObject(  );
+		for ( int i = 0; i < NUMBER_OF_SKILLS; i++ ) {
+			jo.put( skillNames[i].trim(), user1[i].toJson() );
+		}
+		return jo;
+
 	}
 
 	public String getName() {

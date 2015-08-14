@@ -1,6 +1,7 @@
 package com.michael.api.games.runescape;
 
 import com.michael.api.Numbers;
+import com.michael.api.json.JSONObject;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -82,5 +83,13 @@ public class Skill {
 
 	public String toString() {
 		return String.format( "%1s  %7s   %7s   %4s\n", skillName, Numbers.commaFormat( "" + level ), Numbers.commaFormat( "" + xp ), Numbers.commaFormat( "" + rank ) );
+	}
+
+	public JSONObject toJson(){
+		JSONObject jo = new JSONObject(  );
+		jo.put( "level", level );
+		jo.put( "xp", xp );
+		jo.put( "rank", rank );
+		return jo;
 	}
 }

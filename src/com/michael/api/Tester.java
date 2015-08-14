@@ -3,6 +3,7 @@ package com.michael.api;
 import com.michael.api.IO.IO;
 import com.michael.api.db.MongoDatabase;
 import com.michael.api.db.MySqlDatabase;
+import com.michael.api.games.runescape.Highscores;
 import com.michael.api.json.JSONArray;
 import com.michael.api.json.JSONObject;
 import com.michael.api.json.JSONReader;
@@ -29,24 +30,24 @@ import java.util.HashMap;
  */
 public class Tester {
 	public static void main( String[] args ) throws Exception {
-//		JSONObject jr = new JSONObject( new JSONReader( "{'test':[1,2,3,4]}" ) );
-//		IO.println( jr.get( "test" ) );
-		Console console = new Console( "test" );
-		console.display();
-
-		console.append( "test" );
-		console.append( "test1" );
-		console.setTimestampFormat( "HH:mm MM/dd/yyyy" );
-		console.append( "test2" );
-		console.append( "test3" );
-		try {
-			"test".split( "~" );
-		} catch ( Exception e ) {
-			e.printStackTrace();
-		}
-		console.append( "test4" );
-		console.append( "test5" );
-		console.append( "test6" );
-		console.append( "test7", Color.BLUE );
+		Highscores h = new Highscores( "michael rish" );
+		IO.println( h.getjson().toString() );
+//		Console console = new Console( "test" );
+//		console.display();
+//
+//		console.append( "test" );
+//		console.append( "test1" );
+//		console.setTimestampFormat( "HH:mm MM/dd/yyyy" );
+//		console.append( "test2" );
+//		console.append( "test3" );
+//		try {
+//			"test".split( "~" );
+//		} catch ( Exception e ) {
+//			e.printStackTrace();
+//		}
+//		console.append( "test4" );
+//		console.append( "test5" );
+//		console.append( "test6" );
+//		console.append( "test7", Color.BLUE );
 	}
 }
