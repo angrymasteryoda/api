@@ -6,3 +6,6 @@ com.michael.api.games
 com.michael.api.games.runescape
 com.michael.api.json
 com.michael.api.math
+com.michael.api.security
+com.michael.api.swing
+com.michael.api.swing.console
