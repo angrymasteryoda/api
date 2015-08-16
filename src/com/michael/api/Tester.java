@@ -1,5 +1,6 @@
 package com.michael.api;
 
+import com.michael.api.IO.Csv;
 import com.michael.api.IO.IO;
 import com.michael.api.db.MongoDatabase;
 import com.michael.api.db.MySqlDatabase;
@@ -30,24 +31,10 @@ import java.util.HashMap;
  */
 public class Tester {
 	public static void main( String[] args ) throws Exception {
-		Highscores h = new Highscores( "michael rish" );
-		IO.println( h.getjson().toString() );
-//		Console console = new Console( "test" );
-//		console.display();
-//
-//		console.append( "test" );
-//		console.append( "test1" );
-//		console.setTimestampFormat( "HH:mm MM/dd/yyyy" );
-//		console.append( "test2" );
-//		console.append( "test3" );
-//		try {
-//			"test".split( "~" );
-//		} catch ( Exception e ) {
-//			e.printStackTrace();
-//		}
-//		console.append( "test4" );
-//		console.append( "test5" );
-//		console.append( "test6" );
-//		console.append( "test7", Color.BLUE );
+		Csv csv = new Csv( "test.csv" );
+//		IO.println( csv.join( new Object[]{ "test", 1, 1.0, true, 'a' }, ',', '"' ) );
+//		csv.put( new Object[]{ "e\"t\"\"d\"", 1, 1.0, true, 'a' } );
+//		csv.write();
+		csv.read();
 	}
 }
