@@ -2,27 +2,8 @@ package com.michael.api;
 
 import com.michael.api.IO.Csv;
 import com.michael.api.IO.IO;
-import com.michael.api.db.MongoDatabase;
-import com.michael.api.db.MySqlDatabase;
-import com.michael.api.games.runescape.Highscores;
-import com.michael.api.json.JSONArray;
-import com.michael.api.json.JSONObject;
-import com.michael.api.json.JSONReader;
-import com.michael.api.security.AES;
-import com.michael.api.swing.BackForeColor;
-import com.michael.api.swing.MSplashScreen;
-import com.michael.api.swing.console.Console;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.DBObject;
-import com.sun.org.apache.bcel.internal.generic.DMUL;
 
-import java.awt.*;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.HashMap;
+import java.util.Random;
 
 /**
  * Created By: Michael Risher
@@ -32,9 +13,35 @@ import java.util.HashMap;
 public class Tester {
 	public static void main( String[] args ) throws Exception {
 		Csv csv = new Csv( "test.csv" );
+		Random rand = new Random();
+		for ( int i = 0; i < 50; i++ ) {
+			Object[] arr = new Object[4];
+			long val = rand.nextInt( ( 2147483600 - 10 ) + 1 ) + 10;
+			BaseConversions.setPrettyPrint( true );
+			arr[0] = i;
+			arr[1] = val;
+			arr[2] = BaseConversions.decimalToBinary( val );
+			arr[3] = BaseConversions.decimalToBaseN( val, 16 );
+			csv.put( i, arr );
+		}
+		csv.write();
 //		IO.println( csv.join( new Object[]{ "test", 1, 1.0, true, 'a' }, ',', '"' ) );
 //		csv.put( new Object[]{ "e\"t\"\"d\"", 1, 1.0, true, 'a' } );
 //		csv.write();
-		csv.read();
+//		csv.read();
+
+//		IO.println( "0000000100111011" );
+//		IO.println( BaseConversions.prettyPrint( BaseConversions.decimalToBinary( 315 ) ) );
+//		IO.println( BaseConversions.prettyPrint( BaseConversions.decimalToBinary( -315 ) ) );
+//		IO.println( BaseConversions.prettyPrint( BaseConversions.decimalToBaseN( -315, 16 ) ));
+//		IO.println( BaseConversions.decimalToBinary( -39363  ) );
+
+//		IO.println("");
+//		IO.println( Numbers.getBaseNToDecimal( "0101", 2 ) );
+//		IO.println( Numbers.getBaseNToDecimal( "1111", 2 ) );
 	}
 }
+/*
+i,value,bin,hex
+
+*/

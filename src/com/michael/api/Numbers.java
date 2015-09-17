@@ -13,7 +13,7 @@ public class Numbers {
 	/**
 	 * @param dec
 	 * @return
-	 * @author Michael Risher
+	 * @deprecated 09/16/15
 	 */
 	private static String decimalToBinary( long dec ) {
 		String bin = "";
@@ -33,6 +33,7 @@ public class Numbers {
 	 *
 	 * @param dec
 	 * @return binary
+	 * @deprecated 09/16/15
 	 */
 	public static String getDecimalToBinary( long dec ) {
 		return decimalToBinary( dec );
@@ -56,6 +57,7 @@ public class Numbers {
 	 *
 	 * @param dec
 	 * @return octal
+	 * @deprecated 09/16/15
 	 */
 	public static String getDecimalToOctal( long dec ) {
 		return decimalToOctal( dec );
@@ -64,6 +66,7 @@ public class Numbers {
 	/**
 	 * @param dec
 	 * @return
+	 * @deprecated 09/16/15
 	 */
 	private static String decimalToHexadecimal( long dec ) {
 		String par1str = "";
@@ -84,6 +87,7 @@ public class Numbers {
 	 *
 	 * @param dec
 	 * @return hexadecimal
+	 * @deprecated 09/16/15
 	 */
 	public static String getDecimalToHexadecimal( long dec ) {
 		return decimalToHexadecimal( dec );
@@ -94,7 +98,7 @@ public class Numbers {
 	 *
 	 * @param oct
 	 * @return decimal
-	 * @author Michael Risher
+	 * @deprecated 09/16/15
 	 */
 	private static String octalToDecimal( long oct ) {
 		String nums = "" + oct;
@@ -123,6 +127,7 @@ public class Numbers {
 	 *
 	 * @param oct
 	 * @return decimal
+	 * @deprecated 09/16/15
 	 */
 	public static String getOctalToDecimal( long oct ) {
 		return octalToDecimal( oct );
@@ -133,6 +138,7 @@ public class Numbers {
 	 *
 	 * @param oct
 	 * @return binary
+	 * @deprecated 09/16/15
 	 */
 	public static String getOctalToBinary( long oct ) {
 		long dec = Integer.parseInt( octalToDecimal( oct ) );
@@ -144,6 +150,7 @@ public class Numbers {
 	 *
 	 * @param oct
 	 * @return hexadecimal
+	 * @deprecated 09/16/15
 	 */
 	public static String getOctalToHexadecimal( long oct ) {
 		long dec = Integer.parseInt( octalToDecimal( oct ) );
@@ -155,6 +162,7 @@ public class Numbers {
 	 *
 	 * @param hex
 	 * @return decimal
+	 * @deprecated 09/16/15
 	 */
 	private static String hexadecimalToDecimal( String hex ) {
 		String result = "";
@@ -178,6 +186,7 @@ public class Numbers {
 	 *
 	 * @param hex
 	 * @return decimal
+	 * @deprecated 09/16/15
 	 */
 	public static String getHexadecimalToDecimal( String hex ) {
 		return hexadecimalToDecimal( hex );
@@ -188,6 +197,7 @@ public class Numbers {
 	 *
 	 * @param hex
 	 * @return binary
+	 * @deprecated 09/16/15
 	 */
 	public static String getHexadecimalToBinary( String hex ) {
 		long dec = Integer.parseInt( hexadecimalToDecimal( hex ) );
@@ -199,6 +209,7 @@ public class Numbers {
 	 *
 	 * @param hex
 	 * @return octal
+	 * @deprecated 09/16/15
 	 */
 	public static String getHexadecimalToOctal( String hex ) {
 		long dec = Integer.parseInt( hexadecimalToDecimal( hex ) );
@@ -211,7 +222,7 @@ public class Numbers {
 	 * @param dec
 	 * @param base
 	 * @return
-	 * @author Michael Risher
+	 * @deprecated 09/16/15
 	 */
 	private static String decimalToBaseN( long dec, int base ) {
 		String result = "";
@@ -252,6 +263,7 @@ public class Numbers {
 	 * @param dec
 	 * @param base
 	 * @return baseN
+	 * @deprecated 09/16/15
 	 */
 	public static String getDecimalToBaseN( long dec, int base ) {
 		return decimalToBaseN( dec, base );
@@ -263,7 +275,7 @@ public class Numbers {
 	 * @param inputNumber
 	 * @param base
 	 * @return
-	 * @author Michael Risher
+	 * @deprecated 09/16/15
 	 */
 	private static String baseNToDecimal( String inputNumber, int base ) {
 		String result = "";
@@ -286,6 +298,7 @@ public class Numbers {
 	 * @param inputNumber
 	 * @param base
 	 * @return decimal
+	 * @deprecated 09/16/15
 	 */
 	public static String getBaseNToDecimal( String inputNumber, int base ) {
 		return baseNToDecimal( inputNumber, base );
@@ -296,6 +309,7 @@ public class Numbers {
 	 *
 	 * @param num
 	 * @return alpha-numerical value
+	 * @deprecated 09/16/15
 	 */
 	private static int getNumberOverBase10( String num ) {
 
@@ -320,6 +334,7 @@ public class Numbers {
 	 *
 	 * @param num
 	 * @return Alpha value of number if returns ! there is an error
+	 * @deprecated 09/16/15
 	 */
 	private static char getValueOverBase10( int num ) {
 		String digit = "" + num;

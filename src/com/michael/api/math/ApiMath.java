@@ -125,6 +125,15 @@ public class ApiMath {
 	}
 
 	/**
+	 * Returns the Absolute
+	 * @param x
+	 * @return Absolute Value of x
+	 */
+	public static long abs( long x ){
+		return ( x < 0 ) ? -x : x;
+	}
+
+	/**
 	 * Finds the max value
 	 * @param nums
 	 * @return Max value
