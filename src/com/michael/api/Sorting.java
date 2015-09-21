@@ -7,6 +7,7 @@ package com.michael.api;
  */
 public class Sorting {
 
+	private static int heapN;
 	public void sort( char[][] a ) {
 		for ( int t = 0; t < a.length; t++ ) {
 
@@ -47,6 +48,58 @@ public class Sorting {
 			quickSort( array, k + 1, end ); //quicksort the right part
 		} else {
 			return; //its sorted
+		}
+	}
+
+	public static void bubbleSort( int[] array ){
+		boolean swap = false;
+		int len = array.length - 1;
+		do{
+			swap = false;
+			for ( int i = 0; i < len; i++ ) {
+				if ( array[i] > array[i+1] ) {
+					swap( array, i, i+1 );
+					swap = true;
+				}
+			}
+			len--;
+		}
+		while( swap );
+
+	}
+
+	public static void heapSort( int[] array ){
+		//make the heap
+		heapify( array );
+		for ( int i = heapN; i > 0; i-- ) {
+			swap( array, 0, i );
+			heapN--;
+			maxHeap( array, 0 );
+		}
+	}
+
+	private static void heapify( int[] array ){
+		heapN = array.length - 1;
+		for ( int i = heapN / 2; i >= 0; i-- ) {
+			maxHeap( array, i );
+		}
+	}
+
+	//swap the largest element in heap
+	private static void maxHeap( int[] array, int i ){
+		int left = 2 * i;
+		int right = 2 * i + 1;
+		int max = i;
+		if ( left <= heapN && array[left] > array[right] ) {
+			max = left;
+		}
+		if ( right <= heapN && array[right] > array[max] ) {
+			max = right;
+		}
+
+		if ( max != i ) {
+			swap( array, i, max );
+			maxHeap( array, max );
 		}
 	}
 

@@ -12,33 +12,41 @@ import java.util.Random;
  */
 public class Tester {
 	public static void main( String[] args ) throws Exception {
-		Csv csv = new Csv( "test.csv" );
-		Random rand = new Random();
-		for ( int i = 0; i < 50; i++ ) {
-			Object[] arr = new Object[4];
-			long val = rand.nextInt( ( 2147483600 - 10 ) + 1 ) + 10;
-			BaseConversions.setPrettyPrint( true );
-			arr[0] = i;
-			arr[1] = val;
-			arr[2] = BaseConversions.decimalToBinary( val );
-			arr[3] = BaseConversions.decimalToBaseN( val, 16 );
-			csv.put( i, arr );
+		int[] array = buildArray( 10 );
+		//print( array, 10 );
+		IO.println( "" );
+		//print( array, 10 );
+		long beg = System.nanoTime();
+		Sorting.heapSort( array );
+		long end = System.nanoTime();
+		IO.println( "took: " + ( end - beg ) + "u");
+	}
+	private static int[] buildArray( int len ){
+		Random rand = new Random(  );
+		int[] array = new int[ len ];
+		for ( int i = 0; i < len; i++ ) {
+			array[i] = i;
 		}
-		csv.write();
-//		IO.println( csv.join( new Object[]{ "test", 1, 1.0, true, 'a' }, ',', '"' ) );
-//		csv.put( new Object[]{ "e\"t\"\"d\"", 1, 1.0, true, 'a' } );
-//		csv.write();
-//		csv.read();
 
-//		IO.println( "0000000100111011" );
-//		IO.println( BaseConversions.prettyPrint( BaseConversions.decimalToBinary( 315 ) ) );
-//		IO.println( BaseConversions.prettyPrint( BaseConversions.decimalToBinary( -315 ) ) );
-//		IO.println( BaseConversions.prettyPrint( BaseConversions.decimalToBaseN( -315, 16 ) ));
-//		IO.println( BaseConversions.decimalToBinary( -39363  ) );
+		for ( int j = 0; j < 6; j++ ) {
+			for ( int i = 0; i < len; i++ ) {
+				int second = rand.nextInt( len );
+				int temp = array[i];
+				array[i] = array[second];
+				array[second] = temp;
+			}
+		}
 
-//		IO.println("");
-//		IO.println( Numbers.getBaseNToDecimal( "0101", 2 ) );
-//		IO.println( Numbers.getBaseNToDecimal( "1111", 2 ) );
+		return array;
+	}
+
+	private static void print( int[] a, int nl ){
+		for ( int i = 0; i < a.length; i++ ) {
+			IO.print( a[i] + "  " );
+			if ( i % nl == nl - 1 ) {
+				IO.println("");
+			}
+		}
 	}
 }
 /*
