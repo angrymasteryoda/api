@@ -20,18 +20,47 @@ public class Csv {
 
 	//TODO doc this class
 
+	/**
+	 * Create a csv file
+	 */
+	public Csv() {
+		this( null, ',', '"', '\\' );
+	}
+
+	/**
+	 * Create a csv file
+	 * @param fileName filename to save with
+	 */
 	public Csv( String fileName ) {
 		this( fileName, ',', '"', '\\' );
 	}
 
+	/**
+	 * Create a csv file
+	 * @param fileName filename to save with
+	 * @param delimiter char used as delimiter
+	 */
 	public Csv( String fileName, char delimiter ) {
 		this( fileName, delimiter, '"', '\\' );
 	}
 
+	/**
+	 * Create a csv file
+	 * @param fileName filename to save with
+	 * @param delimiter char used as delimiter
+	 * @param enclosure char that encloses strings
+	 */
 	public Csv( String fileName, char delimiter, char enclosure ) {
 		this( fileName, delimiter, enclosure, '\\' );
 	}
 
+	/**
+	 * Create a csv file
+	 * @param fileName filename to save with
+	 * @param delimiter char used as delimiter
+	 * @param enclosure char that encloses strings
+	 * @param escape char to escape characters
+	 */
 	public Csv( String fileName, char delimiter, char enclosure, char escape ) {
 		this.fileName = fileName;
 		this.list = new ArrayList();
@@ -41,23 +70,59 @@ public class Csv {
 	}
 
 
+	/**
+	 * Insert an array of data into a line of the csv
+	 * @param in data to input
+	 */
 	public void put( final Object[] in ) {
 		list.add( join( in ) );
 	}
 
+	/**
+	 * Insert an array of data into a line of the csv
+	 * @param i index to insert to
+	 * @param in data to input
+	 */
 	public void put( int i, final Object[] in ) {
 		list.add( i, join( in ) );
 	}
 
+	/**
+	 * remove all data from csv
+	 */
 	public void clear() {
 		list.clear();
 	}
 
+	/**
+	 * get a line from the csv
+	 * @param index line
+	 * @return line from csv in array
+	 */
 	public Object[] get( int index ) {
 		return split( list.get( index ) );
 	}
 
+	/**
+	 * get a specific item in a line from the csv
+	 * @param col line
+	 * @param index index of  the object
+	 * @return fetched object
+	 */
+	public Object getIndex( int col, int index ){
+		Object[] objs = split( list.get( col ) );
+		return objs[index];
+	}
+
+	/**
+	 * write to file
+	 * @throws IOException
+	 */
 	public void write() throws IOException {
+		if ( fileName == null ) {
+			IOException e = new IOException( "No file inputted" );
+			throw e;
+		}
 		File file = new File( fileName );
 		if ( file.getParentFile() != null ) {
 			if ( !file.getParentFile().exists() ) {
@@ -78,6 +143,10 @@ public class Csv {
 		bw.close();
 	}
 
+	/**
+	 * read from file
+	 * @throws IOException
+	 */
 	public void read() throws IOException{
 		File file = new File( fileName );
 
@@ -92,6 +161,11 @@ public class Csv {
 		br.close();
 	}
 
+	/**
+	 * join the data into a string for printing
+	 * @param in
+	 * @return
+	 */
 	private String join( final Object[] in ) {
 		String s = "";
 		for ( int i = 0; i < in.length; i++ ) {
@@ -109,6 +183,11 @@ public class Csv {
 		return s;
 	}
 
+	/**
+	 * split the string read from file into the java data
+	 * @param in
+	 * @return
+	 */
 	private Object[] split( final Object in ) {
 		String strIn = in.toString();
 		int commas = 0;
