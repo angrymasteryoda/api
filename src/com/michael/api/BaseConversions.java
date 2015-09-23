@@ -9,6 +9,7 @@ import com.michael.api.math.ApiMath;
  */
 public class BaseConversions {
 	private static boolean prettyPrint = false;
+	private static int fractionLimit = 16;
 
 	/**
 	 * converts decimal to binary can handle negatives
@@ -37,6 +38,36 @@ public class BaseConversions {
 		}
 		result = fullValue( result, '0' );
 		return prettyPrint ? prettyPrint( result ) : result;
+	}
+
+	/**
+	 * Converter decimal to bases 2-35
+	 * @param in
+	 * @param base
+	 * @return
+	 * @author Michael Risher
+	 */
+	public static String decimalToBaseN( double in, int base ) {
+		String number = Double.toString( in );
+		String decimal = number.split( "\\." )[0];
+		String frac = number.split( "\\." )[1];
+
+		int count = 0;
+		double temp = new Double( "." + frac );
+		String fraction = "";
+		while ( count < fractionLimit ){
+			temp *= base;
+			long t = Long.parseLong( Double.toString( temp ).split( "\\." )[0]);
+			fraction += "" + t;
+			temp -= t;
+			if( temp == 0 ){
+				break;
+			}
+			count++;
+		}
+
+		return decimalToBaseN( new Long( decimal ), base ) + "." + fraction;
+
 	}
 
 	/**

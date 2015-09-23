@@ -12,15 +12,11 @@ import java.util.Random;
  */
 public class Tester {
 	public static void main( String[] args ) throws Exception {
-		int[] array = buildArray( 10 );
-		//print( array, 10 );
-		IO.println( "" );
-		//print( array, 10 );
-		long beg = System.nanoTime();
-		Sorting.heapSort( array );
-		long end = System.nanoTime();
-		IO.println( "took: " + ( end - beg ) + "u");
+		IO.println( BaseConversions.decimalToBaseN( 113.4, 16 ));
+		IO.println( BaseConversions.decimalToBaseN( 71.666, 10 ));
 	}
+
+
 	private static int[] buildArray( int len ){
 		Random rand = new Random(  );
 		int[] array = new int[ len ];
