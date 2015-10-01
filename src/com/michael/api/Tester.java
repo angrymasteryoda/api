@@ -1,9 +1,8 @@
 package com.michael.api;
 
 import com.michael.api.IO.Csv;
+import com.michael.api.IO.CsvRecord;
 import com.michael.api.IO.IO;
-
-import java.util.Random;
 
 /**
  * Created By: Michael Risher
@@ -12,37 +11,18 @@ import java.util.Random;
  */
 public class Tester {
 	public static void main( String[] args ) throws Exception {
-		IO.println( BaseConversions.decimalToBaseN( 113.4, 16 ));
-		IO.println( BaseConversions.decimalToBaseN( 71.666, 10 ));
-	}
-
-
-	private static int[] buildArray( int len ){
-		Random rand = new Random(  );
-		int[] array = new int[ len ];
-		for ( int i = 0; i < len; i++ ) {
-			array[i] = i;
-		}
-
-		for ( int j = 0; j < 6; j++ ) {
-			for ( int i = 0; i < len; i++ ) {
-				int second = rand.nextInt( len );
-				int temp = array[i];
-				array[i] = array[second];
-				array[second] = temp;
-			}
-		}
-
-		return array;
-	}
-
-	private static void print( int[] a, int nl ){
-		for ( int i = 0; i < a.length; i++ ) {
-			IO.print( a[i] + "  " );
-			if ( i % nl == nl - 1 ) {
-				IO.println("");
-			}
-		}
+		Csv csv = new Csv( "test.csv" );
+		csv.setHeader( new Object[]{ "string", "number", "bool" } );
+		csv.put( new Object[]{ "string1", 1, true } );
+		csv.put( new Object[]{ "string2", 2, false } );
+		csv.put( new Object[]{ "string3", 3, true } );
+		CsvRecord record = new CsvRecord();
+		record.put( "string4" );
+		record.put( 4);
+		record.put( false );
+		csv.put( record );
+		IO.println( csv.getColumn( 0 ) );
+		csv.write();
 	}
 }
 /*

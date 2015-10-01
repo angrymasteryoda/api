@@ -1,24 +1,25 @@
 package com.michael.api.IO;
 
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.ListIterator;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Michael Risher
- * Date: 8/15/15
- * Time: 10:12 AM
+ * Created By: Michael Risher
+ * Date: 9/30/15
+ * Time: 6:09 PM
  */
+@SuppressWarnings("unchecked")
 public class Csv {
+	private boolean hasHeaders = false;
 	private String fileName;
-	private List list;
-	private int index = 0;
-
+	private List<Object> list;
+	private List<Object> header;
 	private char delimiter;
 	private char enclosure;
 	private char escape;
-
-	//TODO doc this class
 
 	/**
 	 * Create a csv file
@@ -29,6 +30,7 @@ public class Csv {
 
 	/**
 	 * Create a csv file
+	 *
 	 * @param fileName filename to save with
 	 */
 	public Csv( String fileName ) {
@@ -37,7 +39,8 @@ public class Csv {
 
 	/**
 	 * Create a csv file
-	 * @param fileName filename to save with
+	 *
+	 * @param fileName  filename to save with
 	 * @param delimiter char used as delimiter
 	 */
 	public Csv( String fileName, char delimiter ) {
@@ -46,7 +49,8 @@ public class Csv {
 
 	/**
 	 * Create a csv file
-	 * @param fileName filename to save with
+	 *
+	 * @param fileName  filename to save with
 	 * @param delimiter char used as delimiter
 	 * @param enclosure char that encloses strings
 	 */
@@ -56,35 +60,76 @@ public class Csv {
 
 	/**
 	 * Create a csv file
-	 * @param fileName filename to save with
+	 *
+	 * @param fileName  filename to save with
 	 * @param delimiter char used as delimiter
 	 * @param enclosure char that encloses strings
-	 * @param escape char to escape characters
+	 * @param escape    char to escape characters
 	 */
 	public Csv( String fileName, char delimiter, char enclosure, char escape ) {
 		this.fileName = fileName;
-		this.list = new ArrayList();
+		this.list = new ArrayList<Object>();
+		this.header = new ArrayList();
 		this.delimiter = delimiter;
 		this.enclosure = enclosure;
 		this.escape = escape;
 	}
 
-
 	/**
 	 * Insert an array of data into a line of the csv
+	 *
 	 * @param in data to input
 	 */
 	public void put( final Object[] in ) {
-		list.add( join( in ) );
+		list.add( new CsvRecord( in ) );
 	}
 
 	/**
 	 * Insert an array of data into a line of the csv
-	 * @param i index to insert to
+	 *
+	 * @param in data to input
+	 */
+	public void put( final CsvRecord in ) {
+		list.add( in );
+	}
+
+	/**
+	 * Insert an array of data into a line of the csv
+	 *
+	 * @param in data to input
+	 */
+	public void put( final ArrayList[] in ) {
+		list.add( new CsvRecord( in ) );
+	}
+
+	/**
+	 * Insert an array of data into a line of the csv
+	 *
+	 * @param i  index to insert to
 	 * @param in data to input
 	 */
 	public void put( int i, final Object[] in ) {
-		list.add( i, join( in ) );
+		list.add( i, new CsvRecord( in ) );
+	}
+
+	/**
+	 * Insert an array of data into a line of the csv
+	 *
+	 * @param i  index to insert to
+	 * @param in data to input
+	 */
+	public void put( int i, final ArrayList[] in ) {
+		list.add( i, new CsvRecord( in ) );
+	}
+
+	/**
+	 * Insert an array of data into a line of the csv
+	 *
+	 * @param i  index to insert to
+	 * @param in data to input
+	 */
+	public void put( int i, final CsvRecord[] in ) {
+		list.add( i, in );
 	}
 
 	/**
@@ -96,29 +141,41 @@ public class Csv {
 
 	/**
 	 * get a line from the csv
+	 *
 	 * @param index line
 	 * @return line from csv in array
 	 */
-	public Object[] get( int index ) {
-		return split( list.get( index ) );
+	public CsvRecord get( int index ) {
+		return (CsvRecord) list.get( index );
 	}
 
 	/**
-	 * get a specific item in a line from the csv
-	 * @param col line
-	 * @param index index of  the object
-	 * @return fetched object
+	 * Get entire column
+	 * @param index column index
+	 * @return Column stored in CsvRecord
 	 */
-	public Object getIndex( int col, int index ){
-		Object[] objs = split( list.get( col ) );
-		return objs[index];
+	public CsvRecord getColumn( int index ) {
+		CsvRecord record = new CsvRecord();
+		for ( int i = 0; i < list.size(); i++ ) {
+			record.put( ( (CsvRecord) list.get( i ) ).get( 0 ) );
+		}
+		return record;
 	}
 
 	/**
-	 * write to file
-	 * @throws IOException
+	 * write to file. if headers exist will write them
+	 * @throws java.io.IOException
 	 */
 	public void write() throws IOException {
+		write( hasHeaders );
+	}
+
+	/**
+	 * write to file.
+	 * @param writeHeaders flag to print the headers
+	 * @throws IOException
+	 */
+	public void write( boolean writeHeaders ) throws IOException {
 		if ( fileName == null ) {
 			IOException e = new IOException( "No file inputted" );
 			throw e;
@@ -135,8 +192,13 @@ public class Csv {
 		}
 
 		BufferedWriter bw = new BufferedWriter( new FileWriter( file.getAbsolutePath() ) );
+
+		if ( writeHeaders && hasHeaders ) {
+			bw.write( ( ( CsvRecord ) header.get( 0 ) ).printString( delimiter, enclosure ) );
+			bw.newLine();
+		}
 		for ( int i = 0; i < list.size(); i++ ) {
-			bw.write( list.get( i ).toString() );
+			bw.write( ( (CsvRecord) list.get( i ) ).printString( delimiter, enclosure ) );
 			bw.newLine();
 		}
 		bw.flush();
@@ -148,6 +210,15 @@ public class Csv {
 	 * @throws IOException
 	 */
 	public void read() throws IOException{
+		read( false );
+	}
+
+	/**
+	 * read from file
+	 * @param hasHeaders flag if has headers will exclude them in the data
+	 * @throws IOException
+	 */
+	public void read( boolean hasHeaders ) throws IOException{
 		File file = new File( fileName );
 
 		BufferedReader br = new BufferedReader( new FileReader( file.getAbsolutePath() ) );
@@ -156,211 +227,210 @@ public class Csv {
 		clear();
 		int i = 0;
 		while( ( line = br.readLine() ) != null ){
-			list.add( i++, line );
+			if ( hasHeaders && i ==0 ) {
+				header.add( i++, CsvRecord.loadString( line, delimiter, enclosure ) );
+			} else{
+				list.add( i++, CsvRecord.loadString( line, delimiter, enclosure ) );
+			}
 		}
 		br.close();
 	}
 
 	/**
-	 * join the data into a string for printing
-	 * @param in
-	 * @return
+	 * gets the row count of the data
+	 * @return count of rows
 	 */
-	private String join( final Object[] in ) {
-		String s = "";
-		for ( int i = 0; i < in.length; i++ ) {
-			if ( in[ i ] instanceof Number || in[ i ] instanceof Boolean ) {
-				s += in[ i ].toString();
-			} else {
-				String temp = in[ i ].toString();
-				temp = escape( temp );
-				s += enclosure + temp + enclosure;
-			}
-			if ( i != in.length - 1 ) {
-				s += delimiter;
-			}
-		}
-		return s;
-	}
-
-	/**
-	 * split the string read from file into the java data
-	 * @param in
-	 * @return
-	 */
-	private Object[] split( final Object in ) {
-		String strIn = in.toString();
-		int commas = 0;
-		for ( int i = 0; i < strIn.length(); i++ ) {
-			if ( strIn.charAt( i ) == delimiter ) {
-				commas++;
-			}
-		}
-		int type = -1;
-		Object[] objs = new Object[ commas + 1 ];
-		String temp = "";
-		int index = 0;
-		boolean doubleEnclosure = false;
-		for ( int i = 0; i < strIn.length(); i++ ) {
-			boolean skip = false;
-			char current = strIn.charAt( i );
-			if ( current == enclosure ) {
-				//its a string
-				boolean noLookAhead = false;
-				if ( i == strIn.length() - 1 ) {
-					noLookAhead = true;
-				}
-				type = 1;
-				if ( !noLookAhead ) {
-					if ( strIn.charAt( i + 1 ) == enclosure || doubleEnclosure ) {
-						//assume its a enclosure meant to be there
-						if ( doubleEnclosure ) {
-							skip = true;
-							doubleEnclosure = false;
-						} else {
-							doubleEnclosure = true;
-						}
-
-					}
-				}
-			} else if ( ( "" + current ).matches( "[0-9\\.\\-]" ) ) {
-				//its a number type
-				type = 2;
-			} else {
-				if ( type == -1 ) {
-					//probably a boolean
-					type = 3;
-				} else {
-					//if its a letter in a string
-					doubleEnclosure = false;
-				}
-			}
-
-			if ( current == delimiter || i == strIn.length() - 1 ) {
-				if ( i == strIn.length() - 1) {
-					//get the last char
-					temp += current;
-				}
-				skip = true;
-				switch ( type ) {
-					case 1:
-						//take off the quotes in front and end
-						temp = temp.substring( 1, temp.length() - 1 );
-						objs[ index++ ] = temp;
-						break;
-					case 2:
-						if ( temp.matches( "[\\-\\d]*\\.[\\d]+" ) ) {
-							//going to do double so i don't have to check size
-							objs[ index++ ] = Double.parseDouble( temp );
-						} else {
-							objs[ index++ ] = Integer.parseInt( temp );
-						}
-						break;
-					case 3:
-						if ( temp.matches( "(?i)(true)|(false)" ) ) {
-							objs[ index++ ] = Boolean.parseBoolean( temp );
-						}
-						break;
-				}
-				type = -1;
-				temp = "";
-			}
-
-			if ( !skip ) {
-				temp += current;
-			}
-
-		}
-		return objs;
-	}
-
 	public int size(){
 		return list.size();
 	}
 
+	/**
+	 * Returns true if this list contains the specified element.
+	 * @param obj element whose presence in this list is to be tested
+	 * @return true if this list contains the specified element
+	 */
 	public boolean contains( Object obj ){
 		return list.contains( obj );
 	}
 
+	/**
+	 * Returns true if this list contains all of the elements of the specified collection.
+	 * @param  collections collection to be checked for containment in this list
+	 * @return true if this list contains all of the elements of the specified collection
+	 */
 	public boolean containsAll( Collection<?> collections ){
 		return list.containsAll( collections );
 	}
 
+	/**
+	 * Returns the index of the first occurrence of the specified element
+	 * in this list, or -1 if this list does not contain the element.
+	 * @param o element to search for
+	 * @return the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element
+	 */
 	public int indexOf( Object o ){
 		return list.indexOf( o );
 	}
 
+	/**
+	 * Returns the index of the last occurrence of the specified element in this list, or -1 if this list does not contain the element.
+	 *
+	 * @param o element to search for
+	 * @return the index of the last occurrence of the specified element in this list, or -1 if this list does not contain the element
+	 */
 	public int lastIndexOf( Object o){
 		return list.lastIndexOf( o );
 	}
 
-	public Object remove( int i ){
-		return list.remove( i );
+	/**
+	 * Removes the element at the specified position in this list (optional operation).  Shifts any subsequent elements to the left (subtracts one
+	 * from their indices).  Returns the element that was removed from the list.
+	 *
+	 * @param index the index of the element to be removed
+	 * @return the element previously at the specified position
+	 */
+	public Object remove( int index ){
+		return list.remove( index );
 	}
 
-	public Object set( int i, Object o ){
-		return list.set( i, o );
+	/**
+	 * Replaces the element at the specified position in this list with the specified element (optional operation).
+	 *
+	 * @param index index of the element to replace
+	 * @param element element to be stored at the specified position
+	 * @return the element previously at the specified position
+	 */
+	public Object set( int index, Object element ){
+		return list.set( index, element );
 	}
 
+	/**
+	 * Returns a list iterator over the elements in this list (in proper sequence).
+	 *
+	 * @return a list iterator over the elements in this list (in proper sequence)
+	 */
 	public ListIterator listIterator(){
 		return list.listIterator();
 	}
 
-	public ListIterator listIterator( int i ){
-		return list.listIterator( i );
+	/**
+	 * Returns a list iterator over the elements in this list (in proper sequence), starting at the specified position in the list.
+	 * The specified index indicates the first element that would be returned by an initial call to {@link ListIterator#next next}.
+	 * An initial call to {@link ListIterator#previous previous} would return the element with the specified index minus one.
+	 *
+	 * @param index index of the first element to be returned from the list iterator (by a call to {@link ListIterator#next next})
+	 * @return a list iterator over the elements in this list (in proper sequence), starting at the specified position in the list
+	 */
+	public ListIterator listIterator( int index ){
+		return list.listIterator( index );
 	}
 
-	private String escape( final String in ) {
-		String str = "";
-		for ( int i = 0; i < in.length(); i++ ) {
-			char current = in.charAt( i );
-			if ( current == enclosure ) {
-				str += "" + current + current;
-			} else {
-				str += current;
-			}
-		}
-		return str;
-	}
-
-
-	private void test() {
-		Object[] a = split( list.get( 0 ) );
-		for ( int i = 0; i < a.length; i++ ) {
-			System.out.println( a[ i ] );
-		}
-	}
-
-
+	/**
+	 * Returns the filename
+	 * @return the filename string
+	 */
 	public String getFileName() {
 		return fileName;
 	}
 
+	/**
+	 * set the filename
+	 * @param fileName string to set the filename to
+	 */
 	public void setFileName( String fileName ) {
 		this.fileName = fileName;
 	}
 
+	/**
+	 * returns the delimiter
+	 * @return returns the delimiter
+	 */
 	public char getDelimiter() {
 		return delimiter;
 	}
 
+	/**
+	 * set the delimiter
+	 * @param delimiter char to set the delimiter
+	 */
 	public void setDelimiter( char delimiter ) {
 		this.delimiter = delimiter;
 	}
 
+	/**
+	 * returns the enclosure
+	 * @return returns the enclosure
+	 */
 	public char getEnclosure() {
 		return enclosure;
 	}
 
+	/**
+	 * set the enclosure
+	 * @param enclosure char to set the enclurse
+	 */
 	public void setEnclosure( char enclosure ) {
 		this.enclosure = enclosure;
 	}
 
+	/**
+	 * get the escape character
+	 * @deprecated 9/30/15
+	 * @return returns the escape character
+	 */
 	public char getEscape() {
 		return escape;
 	}
 
+	/**
+	 * set the escape character
+	 * @deprecated 9/30/15
+	 * @param escape char to set the escape character
+	 */
 	public void setEscape( char escape ) {
 		this.escape = escape;
+	}
+
+	/**
+	 * get the header as a CsvRecord
+	 * @return returns the header as a CsvRecord
+	 */
+	public CsvRecord getHeader() {
+		return (CsvRecord) header.get( 0 );
+	}
+
+	/**
+	 * set the header with an Object[]
+	 * @param in Object[] array to input
+	 */
+	public void setHeader( Object[] in ) {
+		hasHeaders = true;
+		header.add( 0, new CsvRecord( in ) );
+	}
+
+	/**
+	 * set the header with a ArrayList
+	 * @param in ArrayList to input
+	 */
+	public void setHeader( ArrayList in ) {
+		hasHeaders = true;
+		header.add( 0, new CsvRecord( in ) );
+	}
+
+	/**
+	 * set the header with a CsvRecord
+	 * @param in CsvRecord to input
+	 */
+	public void setHeader( CsvRecord in ) {
+		hasHeaders = true;
+		header.add( 0, in );
+	}
+
+	/**
+	 * delete the headers
+	 */
+	public void removeHeader(){
+		hasHeaders = false;
+		header = new ArrayList();
 	}
 }
