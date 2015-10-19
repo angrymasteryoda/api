@@ -1,5 +1,8 @@
 package com.michael.api.IO;
 
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +14,7 @@ import java.util.List;
 @SuppressWarnings("unchecked")
 public class CsvRecord {
 	private List<Object> list;
+	private ResultSet resultSet = null;
 
 	public CsvRecord( final ArrayList list ) {
 		this.list = (ArrayList) list.clone();
@@ -25,6 +29,11 @@ public class CsvRecord {
 		for ( int i = 0; i < in.length; i++ ) {
 			list.add( i, in[i] );
 		}
+	}
+
+	public CsvRecord( ResultSet res ) {
+		this.list = new ArrayList();
+		this.resultSet = res;
 	}
 
 	public Object get( int index ) {
@@ -57,6 +66,24 @@ public class CsvRecord {
 
 	public void put( int index, Object in ) {
 		list.add( index, in );
+	}
+
+	public void fetchResultSetRow()  throws SQLException{
+		if ( resultSet != null ) {
+			ResultSetMetaData rsmd = resultSet.getMetaData();
+			int len = rsmd.getColumnCount();
+			for ( int i = 1; i <= len; i++ ) {
+				list.add( resultSet.getObject( i ) );
+			}
+		}
+	}
+
+	public void fetchResultSetRow( String...columns) throws SQLException {
+		if ( resultSet != null ) {
+			for( String str : columns ) {
+				list.add( resultSet.getObject( str ) );
+			}
+		}
 	}
 
 	public String printString( char delimiter, char enclosure ){
@@ -204,6 +231,6 @@ public class CsvRecord {
 		}
 		return sb.toString();
 	}
-
-
 }
+
+
