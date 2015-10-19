@@ -1,6 +1,10 @@
 package com.michael.api.IO;
 
 import java.io.*;
+import java.lang.reflect.Array;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -160,6 +164,28 @@ public class Csv {
 			record.put( ( (CsvRecord) list.get( i ) ).get( 0 ) );
 		}
 		return record;
+	}
+
+	public void fetchResultSet( ResultSet resultSet ) throws SQLException {
+		if ( resultSet != null ){
+			ResultSetMetaData rsmd = resultSet.getMetaData();
+			int len = rsmd.getColumnCount();
+			while( resultSet.next() ){
+				CsvRecord record = new CsvRecord( resultSet );
+				record.fetchResultSetRow();
+				list.add( record );
+			}
+		}
+	}
+
+	public void fetchResultSet( ResultSet resultSet, String...columns) throws SQLException {
+		if ( resultSet != null ) {
+			while( resultSet.next() ){
+				CsvRecord record = new CsvRecord( resultSet );
+				record.fetchResultSetRow( columns );
+				list.add( record );
+			}
+		}
 	}
 
 	/**
@@ -424,6 +450,34 @@ public class Csv {
 	public void setHeader( CsvRecord in ) {
 		hasHeaders = true;
 		header.add( 0, in );
+	}
+
+	/**
+	 * set the header with a CsvRecord
+	 * @param strs Strings to input
+	 */
+	public void setHeader( String...strs ){
+		ArrayList<String> arr = new ArrayList<>(  );
+		for( String str : strs ){
+			arr.add( str );
+		}
+		setHeader( arr );
+	}
+
+	/**
+	 * set the header with a CsvRecord
+	 * @param res get headers from column names
+	 */
+	public void setHeader( ResultSet res ) throws SQLException {
+		ResultSetMetaData remd = res.getMetaData();
+		ArrayList<String> arr = new ArrayList<>(  );
+		int len = remd.getColumnCount();
+		for( int i = 1; i <= len; i++ ){
+//			header.add(  );
+			arr.add( i-1, remd.getColumnName( i ) );
+		}
+		hasHeaders = true;
+		header.add( 0, new CsvRecord( arr ) );
 	}
 
 	/**
