@@ -34,7 +34,7 @@ public class BaseConversions {
 		}
 
 		if ( isNegative ) {
-			return twoComplement( result );
+			return prettyPrint ? prettyPrint( twoComplement( result ) ) : twoComplement( result );
 		}
 		result = fullValue( result, '0' );
 		return prettyPrint ? prettyPrint( result ) : result;
