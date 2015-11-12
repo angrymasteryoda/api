@@ -1,506 +1,506 @@
-"id","name","grade","type","collection","image"
-1,"Emerald",4,18,1,1
-2,"Spitfire",4,13,1,1
-3,"Anodized Navy",3,11,1,1
-4,"Rust Coat",3,24,1,1
-5,"Hazard",3,27,1,1
-6,"Facets",2,7,1,1
-7,"Mosaico",2,29,1,1
-8,"Palm",2,32,1,1
-9,"Mayan Dreams",2,20,1,1
-10,"Sand Dune",2,5,1,1
-11,"Groundwater",1,22,1,1
-12,"Jungle",1,30,1,1
-13,"Anodized Gunmetal",1,4,1,1
-14,"Dry Season",1,23,1,1
-15,"Tornado",1,8,1,1
-16,"Jungle DDPAT",1,31,1,1
-17,"Blood in the Water",6,20,2,1
-18,"Serum",5,9,2,1
-19,"Cold Blooded",5,25,2,1
-20,"Hypnotic",4,23,2,1
-21,"Hemoglobin",4,3,2,1
-22,"Case Hardened",4,4,2,1
-23,"Graphite",4,28,2,1
-24,"Blood Tiger",3,16,2,1
-25,"Hive",3,7,2,1
-26,"Hexane",3,13,2,1
-27,"Blue Titanium",3,8,2,1
-28,"Crimson Web",3,18,2,1
-29,"Victoria",6,1,3,1
-30,"The Fuschia Is Now",5,1,3,1
-31,"Undertow",5,7,3,1
-32,"Tread Plate",4,1,3,1
-33,"Titanium Bit",4,8,3,1
-34,"Heirloom",4,2,3,1
-35,"Copper Galaxy",4,4,3,1
-36,"Crimson Web",3,1,3,1
-37,"Red FragCam",3,6,3,1
-38,"Panther",3,3,3,1
-39,"Stainless",3,9,3,1
-40,"Blue Fissure",3,5,3,1
-41,"Lightning Strike",6,12,4,1
-42,"Case Hardened",5,10,4,1
-43,"Hypnotic",5,2,4,1
-44,"Dragon Tattoo",4,5,4,1
-45,"Dark Water",4,9,4,1
-46,"Dark Water",4,16,4,1
-47,"Wings",3,11,4,1
-48,"Ultraviolet",3,19,4,1
-49,"Skulls",3,22,4,1
-50,"Fade",4,5,5,1
-51,"Bulldozer",4,23,5,1
-52,"Hot Rod",3,11,5,1
-53,"Anodized Navy",3,32,5,1
-54,"Candy Apple",2,4,5,1
-55,"Caramel",1,26,5,1
-56,"Tornado",1,19,5,1
-57,"Ossified",3,8,6,1
-58,"Jungle Tiger",2,17,6,1
-59,"Jungle Spray",2,10,6,1
-60,"Lichen Dashed",1,20,6,1
-61,"Jungle",1,4,6,1
-62,"Forest Leaves",1,28,6,1
-63,"Jet Set",5,10,7,1
-64,"Pilot",4,2,7,1
-65,"First Class",4,10,7,1
-66,"First Class",3,29,7,1
-67,"Business Class",3,9,7,1
-68,"Red Leather",3,30,7,1
-69,"Leather",2,25,7,1
-70,"Commuter",2,21,7,1
-71,"Coach Class",2,6,7,1
-72,"Traveler",2,19,7,1
-73,"Contractor",1,14,7,1
-74,"Olive Plaid",1,22,7,1
-75,"Green Plaid",1,1,7,1
-76,"Green Plaid",1,23,7,1
-77,"Sand Dune",1,20,7,1
-78,"Franklin",5,7,8,1
-79,"Emerald Pinstripe",4,10,8,1
-80,"Tuxedo",3,1,8,1
-81,"Meteorite",3,2,8,1
-82,"Tuxedo",3,15,8,1
-83,"Green Apple",2,14,8,1
-84,"Death Rattle",2,5,8,1
-85,"Silver",2,21,8,1
-86,"Caged Steel",2,28,8,1
-87,"Carbon Fiber",2,26,8,1
-88,"Forest DDPAT",1,22,8,1
-89,"Army Sheen",1,32,8,1
-90,"Forest DDPAT",1,29,8,1
-91,"Army Sheen",1,19,8,1
-92,"Urban DDPAT",1,8,8,1
-93,"Fire Serpent",6,10,9,1
-94,"Golden Koi",6,2,9,1
-95,"Graphite",5,12,9,1
-96,"Ocean Foam",5,6,9,1
-97,"Emerald Dragon",5,25,9,1
-98,"Overgrowth",4,9,9,1
-99,"Graven",4,21,9,1
-100,"Zirka",4,17,9,1
-101,"Bright Water",4,16,9,1
-102,"Demeter",3,14,9,1
-103,"Shattered",3,15,9,1
-104,"Wave Spray",3,19,9,1
-105,"Bone Pile",3,26,9,1
-106,"Black Limba",3,3,9,1
-107,"Tempest",3,28,9,1
-108,"Cyrex",6,16,10,1
-109,"Asiimov",6,25,10,1
-110,"Conspiracy",5,2,10,1
-111,"Fowl Play",5,4,10,1
-112,"Water Elemental",5,5,10,1
-113,"Koi",4,28,10,1
-114,"Supernova",4,7,10,1
-115,"Osiris",4,24,10,1
-116,"Tigris",4,1,10,1
-117,"Urban Hazard",3,22,10,1
-118,"Desert-Strike",3,32,10,1
-119,"Abyss",3,20,10,1
-120,"Labyrinth",3,26,10,1
-121,"Ivory",3,6,10,1
-122,"Cerberus",4,15,11,1
-123,"Styx",4,13,11,1
-124,"Toxic",3,8,11,1
-125,"Reactor",3,5,11,1
-126,"Bone Machine",3,30,11,1
-127,"Nuclear Garden",3,21,11,1
-128,"Setting Sun",3,23,11,1
-129,"Radiation Hazard",2,11,11,1
-130,"Chemical Green",2,24,11,1
-131,"Nuclear Waste",2,32,11,1
-132,"Contamination",2,7,11,1
-133,"Hot Shot",2,4,11,1
-134,"Fallout Warning",2,19,11,1
-135,"Twilight Galaxy",5,5,12,1
-136,"Hot Rod",5,16,12,1
-137,"Bulldozer",4,19,12,1
-138,"Duelist",4,3,12,1
-139,"Fade",3,21,12,1
-140,"Whiteout",3,7,12,1
-141,"Full Stop",3,22,12,1
-142,"Nitro",3,4,12,1
-143,"Emerald",3,1,12,1
-144,"Night",2,2,12,1
-145,"Urban Rubble",2,15,12,1
-146,"Para Green",2,9,12,1
-147,"Army Sheen",1,18,12,1
-148,"Army Sheen",1,1,12,1
-149,"Impact Drill",1,31,12,1
-150,"Seabird",1,27,12,1
-151,"Neon Rider",6,21,13,1
-152,"Hyper Beast",6,16,13,1
-153,"Djinn",5,13,13,1
-154,"Eco",5,15,13,1
-159,"Worm God",4,12,13,1
-163,"Bronze Deco",3,2,13,1
-164,"Armor Core",3,22,13,1
-170,"Monkey Business",5,4,13,1
-171,"Grand Prix",4,26,13,1
-172,"Pole Position",4,1,13,1
-173,"Heat",4,27,13,1
-175,"Origami",3,29,13,1
-176,"Man-o'-war",3,32,13,1
-177,"Valence",3,7,13,1
-180,"Elite Build",3,10,13,1
-181,"Chatterbox",6,15,14,1
-182,"Man-o'-war",6,12,14,1
-183,"Muertos",5,7,14,1
-184,"?? (Dragon King)",5,17,14,0
-185,"Cartel",5,10,14,1
-186,"Malachite",4,21,14,1
-187,"Serenity",4,29,14,1
-188,"Urban Shock",4,3,14,1
-189,"Naga",4,2,14,1
-190,"Catacombs",3,5,14,1
-191,"System Lock",3,31,14,1
-192,"Quicksilver",3,30,14,1
-193,"Deadly Poison",3,23,14,1
-194,"Grotto",3,18,14,1
-195,"Dragon Lore",6,12,15,1
-196,"Knight",5,16,15,1
-197,"Hand Cannon",4,2,15,1
-198,"Chalice",4,1,15,1
-199,"Dark Age",3,23,15,1
-200,"Chainmail",3,6,15,1
-201,"Royal Blue",2,9,15,1
-202,"Green Apple",2,28,15,1
-203,"Silver",2,27,15,1
-204,"Rust Coat",2,29,15,1
-205,"Storm",1,25,15,1
-206,"Indigo",1,26,15,1
-207,"Indigo",1,21,15,1
-208,"Storm",1,18,15,1
-209,"Briar",1,3,15,1
-210,"Amber Fade",4,6,16,1
-211,"Damascus Steel",3,19,16,1
-212,"Brass",3,24,16,1
-213,"VariCamo",3,16,16,1
-214,"Snake Camo",2,29,16,1
-215,"Safari Mesh",2,10,16,1
-216,"Orange Peel",2,4,16,1
-217,"Palm",2,21,16,1
-218,"VariCamo",2,8,16,1
-219,"Desert Storm",1,14,16,1
-220,"Sand Dune",1,7,16,1
-221,"Sand Mesh",1,18,16,1
-222,"Sand Spray",1,25,16,1
-223,"Sand Dashed",1,23,16,1
-224,"Predator",1,28,16,1
-225,"Brass",4,5,17,1
-226,"Scorpion",4,6,17,1
-227,"Blaze",4,2,17,1
-228,"Copper",3,29,17,1
-229,"Copperhead",3,11,17,1
-230,"Snake Camo",3,12,17,1
-231,"Predator",2,10,17,1
-232,"Palm",2,18,17,1
-233,"Desert Storm",2,17,17,1
-234,"Death by Kitty",6,25,18,1
-235,"BOOM",5,12,18,1
-236,"Red Laminate",5,10,18,1
-237,"Orange DDPAT",4,15,18,1
-238,"Splash",4,7,18,1
-239,"Orange DDPAT",4,29,18,1
-240,"Memento",3,27,18,1
-241,"Doomkitty",3,13,18,1
-242,"Faded Zebra",3,17,18,1
-243,"X-Ray",6,17,19,1
-244,"Cobalt Disruption",5,2,19,1
-245,"Electric Hive",5,12,19,1
-246,"Afterimage",5,13,19,1
-247,"Blue Laminate",4,10,19,1
-248,"Blind Spot",4,25,19,1
-249,"Blue Titanium",3,15,19,1
-250,"Water Sigil",3,24,19,1
-251,"Ghost Camo",3,28,19,1
-252,"Azure Zebra",3,14,19,1
-253,"Steel Disruption",3,7,19,1
-254,"Nightshade",3,4,19,1
-255,"Bullet Rain",6,17,20,1
-256,"Jaguar",6,10,20,1
-257,"Corticera",5,6,20,1
-258,"Corticera",5,12,20,1
-259,"Bloomstick",5,28,20,1
-260,"Bengal Tiger",5,11,20,1
-261,"Crimson Web",4,2,20,1
-262,"Steel Disruption",4,5,20,1
-263,"Ocean Foam",4,22,20,1
-264,"Blue Streak",4,24,20,1
-265,"Virus",4,25,20,1
-266,"Red Python",3,30,20,1
-267,"Bratatat",3,32,20,1
-268,"Hexane",3,1,20,1
-269,"Blood Tiger",3,9,20,1
-270,"Ultraviolet",3,21,20,1
-271,"Dark Water",3,20,20,1
-272,"Hyper Beast",6,12,21,1
-273,"Aquamarine Revenge",6,10,21,1
-274,"Cyrex",5,19,21,1
-275,"Nemesis",5,22,21,1
-276,"Yellow Jacket",5,1,21,1
-277,"Handgun",4,6,21,1
-278,"Loudmouth",4,32,21,1
-279,"Ruby Poison Dart",4,23,21,1
-280,"Evil Daimyo",4,17,21,1
-281,"Neural Net",4,13,21,1
-282,"Torque",3,9,21,1
-283,"Riot",3,26,21,1
-284,"Elite Build",3,25,21,1
-285,"Ranger",3,28,21,1
-286,"Bunsen Burner",3,5,21,1
-287,"Rocket Pop",3,15,21,1
-288,"Medusa",6,12,22,1
-289,"Poseidon",5,17,22,1
-290,"Chronos",4,14,22,1
-291,"Icarus Fell",4,16,22,1
-292,"Minotaur's Labyrinth",3,26,22,1
-293,"Pandora's Box",3,23,22,1
-294,"Hades",2,8,22,1
-295,"Pathfinder",2,6,22,1
-296,"Sun in Leo",2,12,22,1
-297,"Shipping Forecast",2,31,22,1
-298,"Asterion",1,22,22,1
-299,"Daedalus",1,11,22,1
-300,"Moon in Libra",1,3,22,1
-301,"Moon in Libra",1,28,22,1
-302,"Desert-Strike",6,17,23,1
-303,"Vulcan",6,10,23,1
-304,"Caiman",5,9,23,1
-305,"Atomic Alloy",5,16,23,1
-306,"Cyrex",5,18,23,1
-307,"Orion",5,9,23,1
-308,"Tatter",4,21,23,1
-309,"Torque",4,11,23,1
-310,"Antique",4,24,23,1
-311,"Curse",4,21,23,1
-312,"Heaven Guard",4,30,23,1
-313,"Twist",3,1,23,1
-314,"Module",3,25,23,1
-315,"Pulse",3,6,23,1
-316,"Isaac",3,8,23,1
-317,"Slashed",3,20,23,1
-318,"Retribution",3,3,23,1
-319,"Kami",3,15,23,1
-320,"Desert Warfare",3,25,23,1
-321,"Poison Dart",3,1,23,1
-322,"Brass",3,8,24,1
-323,"Anodized Navy",3,3,24,1
-324,"Tornado",2,17,24,1
-325,"Gunsmoke",2,7,24,1
-326,"Walnut",1,28,24,1
-327,"Sand Dune",1,27,24,1
-328,"Pit Viper",4,12,25,1
-329,"Full Stop",3,29,25,1
-330,"Candy Apple",3,5,25,1
-331,"Anodized Navy",3,22,25,1
-332,"CaliCamo",2,30,25,1
-333,"Boreal Forest",2,16,25,1
-334,"Gunsmoke",2,26,25,1
-335,"Granite Marbleized",2,6,25,1
-336,"Stained",2,3,25,1
-337,"Candy Apple",2,28,25,1
-338,"Groundwater",1,8,25,1
-339,"Contractor",1,11,25,1
-340,"Colony",1,13,25,1
-341,"Sand Dune",1,28,25,1
-342,"Sand Dashed",1,24,25,1
-343,"Cobalt Quartz",4,3,26,1
-344,"Night Ops",3,9,26,1
-345,"Teardown",3,25,26,1
-346,"Anodized Navy",3,19,26,1
-347,"Mudder",2,2,26,1
-348,"Safari Mesh",2,12,26,1
-349,"Night Ops",2,24,26,1
-350,"Cyanospatter",2,13,26,1
-351,"Blue Steel",2,30,26,1
-352,"Boreal Forest",1,7,26,1
-353,"Blue Spruce",1,30,26,1
-354,"Storm",1,11,26,1
-355,"Sage Spray",1,15,26,1
-356,"Waves Perforated",1,19,26,1
-357,"Jungle Dashed",1,14,26,1
-358,"Splash Jam",5,18,27,1
-359,"Modern Hunter",4,17,27,1
-360,"Modern Hunter",3,28,27,1
-361,"Modern Hunter",3,24,27,1
-362,"Blaze Orange",3,30,27,1
-363,"Modern Hunter",3,7,27,1
-364,"Blaze Orange",3,28,27,1
-365,"Grassland Leaves",2,6,27,1
-366,"Forest Leaves",1,24,27,1
-367,"Tornado",1,21,27,1
-368,"Grassland",1,30,27,1
-369,"Bulldozer",4,27,28,1
-370,"Amber Fade",3,21,28,1
-371,"Blaze",3,26,28,1
-372,"Hot Rod",3,23,28,1
-373,"CaliCamo",2,32,28,1
-374,"Tropical Storm",2,20,28,1
-375,"Gator Mesh",2,19,28,1
-376,"Groundwater",2,5,28,1
-377,"Orange Peel",2,22,28,1
-378,"Bone Mask",1,7,28,1
-379,"Contractor",1,4,28,1
-380,"Colony",1,11,28,1
-381,"Safari Mesh",1,14,28,1
-382,"Scorched",1,25,28,1
-383,"Hunting Blind",1,15,28,1
-384,"Nuclear Threat",4,8,29,1
-385,"Nuclear Threat",4,7,29,1
-386,"Radiation Hazard",3,17,29,1
-387,"Fallout Warning",2,30,29,1
-388,"Fallout Warning",2,26,29,1
-389,"Fallout Warning",2,25,29,1
-390,"Irradiated Alert",1,24,29,1
-391,"Irradiated Alert",1,29,29,1
-392,"Irradiated Alert",1,27,29,1
-393,"Whiteout",3,22,30,1
-394,"Silver",3,6,30,1
-395,"Blizzard Marbleized",2,31,30,1
-396,"Arctic Camo",2,14,30,1
-397,"Winter Forest",2,15,30,1
-398,"Contrast Spray",1,13,30,1
-399,"Master Piece",5,16,31,1
-400,"Pink DDPAT",4,12,31,1
-401,"Road Rash",4,9,31,1
-402,"Nitro",3,1,31,1
-403,"VariCamo Blue",3,30,31,1
-404,"Detour",3,20,31,1
-405,"Urban DDPAT",2,2,31,1
-406,"Gunsmoke",2,22,31,1
-407,"Night",2,5,31,1
-408,"Grassland",2,6,31,1
-409,"Sage Spray",1,29,31,1
-410,"Scorched",1,26,31,1
-411,"Contrast Spray",1,31,31,1
-412,"Storm",1,27,31,1
-413,"Storm",1,23,31,1
-414,"Asiimov",6,12,32,1
-415,"Chameleon",6,11,32,1
-416,"Redline",5,10,32,1
-417,"Trigon",5,25,32,1
-418,"Antique",5,28,32,1
-419,"Heat",4,21,32,1
-420,"Pulse",4,19,32,1
-421,"Sergeant",4,13,32,1
-422,"Guardian",4,9,32,1
-423,"Corporal",3,26,32,1
-424,"Terrain",3,32,32,1
-425,"Sandstorm",3,8,32,1
-426,"Heaven Guard",3,27,32,1
-427,"Akihabara Accept",6,11,33,1
-428,"Hydroponic",5,10,33,1
-429,"Neon Kimono",4,4,33,1
-430,"Sunset Storm ?",4,2,33,0
-431,"Daybreak",4,17,33,1
-432,"Aqua Terrace",3,15,33,1
-433,"Counter Terrace",3,27,33,1
-434,"Terrace",3,8,33,1
-435,"Crimson Kimono",2,7,33,1
-436,"Midnight Storm",2,2,33,1
-437,"Bamboo Print",1,24,33,1
-438,"Bamboo Shadow",1,29,33,1
-439,"Bamboo Forest",1,8,33,1
-440,"Orange Kimono",1,14,33,1
-441,"Mint Kimono",1,7,33,1
-442,"Nitro",4,16,34,1
-443,"Acid Fade",3,20,34,1
-444,"Silver Quartz",3,4,34,1
-445,"Teardown",3,13,34,1
-446,"VariCamo",2,14,34,1
-447,"Gator Mesh",2,31,34,1
-448,"VariCamo",2,15,34,1
-449,"Forest Leaves",2,9,34,1
-450,"Condemned",2,11,34,1
-451,"Orange Peel",2,23,34,1
-452,"Contractor",1,3,34,1
-453,"Contractor",1,18,34,1
-454,"Blue Spruce",1,20,34,1
-455,"Army Mesh",1,8,34,1
-456,"Army Recon",1,22,34,1
-457,"Red Quartz",4,8,35,1
-458,"Urban Rubble",3,2,35,1
-459,"Amber Fade",3,29,35,1
-460,"Metallic DDPAT",2,7,35,1
-461,"Metallic DDPAT",2,27,35,1
-462,"Carbon Fiber",2,18,35,1
-463,"Ash Wood",2,25,35,1
-464,"Candy Apple",2,21,35,1
-465,"Urban DDPAT",2,17,35,1
-466,"Urban DDPAT",1,26,35,1
-467,"Colony",1,3,35,1
-468,"Polar Camo",1,14,35,1
-469,"Forest Night",1,4,35,1
-470,"Polar Mesh",1,28,35,1
-471,"Urban Dashed",1,24,35,1
-472,"Wasteland Rebel",6,10,36,1
-473,"Fire Elemental",6,6,36,1
-474,"Cartel",5,7,36,1
-475,"Cardiac",5,18,36,1
-476,"Tranquility",5,30,36,1
-477,"Grinder",4,5,36,1
-478,"Basilisk",4,16,36,1
-479,"Griffin",4,17,36,1
-480,"Highwayman",4,29,36,1
-481,"Urban Hazard",3,4,36,1
-482,"Murky",3,14,36,1
-483,"Firestarter",3,27,36,1
-484,"Dart",3,23,36,1
-485,"Delusion",3,26,36,1
-486,"Demolition",4,3,37,1
-487,"Black Laminate",3,10,37,1
-488,"Glacier Mesh",3,25,37,1
-489,"Carbon Fiber",2,24,37,1
-490,"Urban DDPAT",1,21,37,1
-491,"Urban Perforated",1,30,37,1
-492,"Asiimov",6,17,38,1
-493,"The Kraken",6,29,38,1
-494,"Guardian",5,16,38,1
-495,"Mehndi",5,7,38,1
-496,"Redline",5,12,38,1
-497,"Pulse",4,13,38,1
-498,"Marina",4,3,38,1
-499,"Rose Iron",4,23,38,1
-500,"Rising Skull",4,28,38,1
-501,"Sandstorm",3,15,38,1
-502,"Kami",3,4,38,1
-503,"Magma",3,31,38,1
-504,"Cobalt Halftone",3,24,38,1
-506,"Scumbria",3,30,39,1
-507,"Green Marine",3,18,39,1
-508,"Cobalt Core",3,27,39,1
-509,"Rangeen",3,21,39,1
-510,"Wraiths",3,5,39,1
-511,"Survivor Z",3,13,39,1
-512,"Dualing Dragons",3,3,39,1
-513,"Wingshot",4,7,39,1
-514,"Special Delivery",4,22,39,1
-515,"Nebula Crusader",4,31,39,1
-516,"Stone Cold",4,15,39,1
-517,"Big Iron",5,20,39,1
-518,"Flux",5,14,39,1
-519,"Frontside Misty",5,10,39,1
-520,"Kill Confirmed",6,9,39,1
-521,"Golden Coil",6,16,39,1
+"id","name","grade","type","collection","stattrack","souvenir"
+1,"Emerald",4,18,1,0,0
+2,"Spitfire",4,13,1,0,0
+3,"Anodized Navy",3,11,1,0,0
+4,"Rust Coat",3,24,1,0,0
+5,"Hazard",3,27,1,0,0
+6,"Facets",2,7,1,0,0
+7,"Mosaico",2,29,1,0,0
+8,"Palm",2,32,1,0,0
+9,"Mayan Dreams",2,20,1,0,0
+10,"Sand Dune",2,5,1,0,0
+11,"Groundwater",1,22,1,0,0
+12,"Jungle",1,30,1,0,0
+13,"Anodized Gunmetal",1,4,1,0,0
+14,"Dry Season",1,23,1,0,0
+15,"Tornado",1,8,1,0,0
+16,"Jungle DDPAT",1,31,1,0,0
+17,"Blood in the Water",6,20,2,0,0
+18,"Serum",5,9,2,0,0
+19,"Cold Blooded",5,25,2,0,0
+20,"Hypnotic",4,23,2,0,0
+21,"Hemoglobin",4,3,2,0,0
+22,"Case Hardened",4,4,2,0,0
+23,"Graphite",4,28,2,0,0
+24,"Blood Tiger",3,16,2,0,0
+25,"Hive",3,7,2,0,0
+26,"Hexane",3,13,2,0,0
+27,"Blue Titanium",3,8,2,0,0
+28,"Crimson Web",3,18,2,0,0
+29,"Victoria",6,1,3,0,0
+30,"The Fuschia Is Now",5,1,3,0,0
+31,"Undertow",5,7,3,0,0
+32,"Tread Plate",4,1,3,0,0
+33,"Titanium Bit",4,8,3,0,0
+34,"Heirloom",4,2,3,0,0
+35,"Copper Galaxy",4,4,3,0,0
+36,"Crimson Web",3,1,3,0,0
+37,"Red FragCam",3,6,3,0,0
+38,"Panther",3,3,3,0,0
+39,"Stainless",3,9,3,0,0
+40,"Blue Fissure",3,5,3,0,0
+41,"Lightning Strike",6,12,4,0,0
+42,"Case Hardened",5,10,4,0,0
+43,"Hypnotic",5,2,4,0,0
+44,"Dragon Tattoo",4,5,4,0,0
+45,"Dark Water",4,9,4,0,0
+46,"Dark Water",4,16,4,0,0
+47,"Wings",3,11,4,0,0
+48,"Ultraviolet",3,19,4,0,0
+49,"Skulls",3,22,4,0,0
+50,"Fade",4,5,5,0,0
+51,"Bulldozer",4,23,5,0,0
+52,"Hot Rod",3,11,5,0,0
+53,"Anodized Navy",3,32,5,0,0
+54,"Candy Apple",2,4,5,0,0
+55,"Caramel",1,26,5,0,0
+56,"Tornado",1,19,5,0,0
+57,"Ossified",3,8,6,0,0
+58,"Jungle Tiger",2,17,6,0,0
+59,"Jungle Spray",2,10,6,0,0
+60,"Lichen Dashed",1,20,6,0,0
+61,"Jungle",1,4,6,0,0
+62,"Forest Leaves",1,28,6,0,0
+63,"Jet Set",5,10,7,0,0
+64,"Pilot",4,2,7,0,0
+65,"First Class",4,10,7,0,0
+66,"First Class",3,29,7,0,0
+67,"Business Class",3,9,7,0,0
+68,"Red Leather",3,30,7,0,0
+69,"Leather",2,25,7,0,0
+70,"Commuter",2,21,7,0,0
+71,"Coach Class",2,6,7,0,0
+72,"Traveler",2,19,7,0,0
+73,"Contractor",1,14,7,0,0
+74,"Olive Plaid",1,22,7,0,0
+75,"Green Plaid",1,1,7,0,0
+76,"Green Plaid",1,23,7,0,0
+77,"Sand Dune",1,20,7,0,0
+78,"Franklin",5,7,8,0,0
+79,"Emerald Pinstripe",4,10,8,0,0
+80,"Tuxedo",3,1,8,0,0
+81,"Meteorite",3,2,8,0,0
+82,"Tuxedo",3,15,8,0,0
+83,"Green Apple",2,14,8,0,0
+84,"Death Rattle",2,5,8,0,0
+85,"Silver",2,21,8,0,0
+86,"Caged Steel",2,28,8,0,0
+87,"Carbon Fiber",2,26,8,0,0
+88,"Forest DDPAT",1,22,8,0,0
+89,"Army Sheen",1,32,8,0,0
+90,"Forest DDPAT",1,29,8,0,0
+91,"Army Sheen",1,19,8,0,0
+92,"Urban DDPAT",1,8,8,0,0
+93,"Fire Serpent",6,10,9,0,0
+94,"Golden Koi",6,2,9,0,0
+95,"Graphite",5,12,9,0,0
+96,"Ocean Foam",5,6,9,0,0
+97,"Emerald Dragon",5,25,9,0,0
+98,"Overgrowth",4,9,9,0,0
+99,"Graven",4,21,9,0,0
+100,"Zirka",4,17,9,0,0
+101,"Bright Water",4,16,9,0,0
+102,"Demeter",3,14,9,0,0
+103,"Shattered",3,15,9,0,0
+104,"Wave Spray",3,19,9,0,0
+105,"Bone Pile",3,26,9,0,0
+106,"Black Limba",3,3,9,0,0
+107,"Tempest",3,28,9,0,0
+108,"Cyrex",6,16,10,0,0
+109,"Asiimov",6,25,10,0,0
+110,"Conspiracy",5,2,10,0,0
+111,"Fowl Play",5,4,10,0,0
+112,"Water Elemental",5,5,10,0,0
+113,"Koi",4,28,10,0,0
+114,"Supernova",4,7,10,0,0
+115,"Osiris",4,24,10,0,0
+116,"Tigris",4,1,10,0,0
+117,"Urban Hazard",3,22,10,0,0
+118,"Desert-Strike",3,32,10,0,0
+119,"Abyss",3,20,10,0,0
+120,"Labyrinth",3,26,10,0,0
+121,"Ivory",3,6,10,0,0
+122,"Cerberus",4,15,11,0,0
+123,"Styx",4,13,11,0,0
+124,"Toxic",3,8,11,0,0
+125,"Reactor",3,5,11,0,0
+126,"Bone Machine",3,30,11,0,0
+127,"Nuclear Garden",3,21,11,0,0
+128,"Setting Sun",3,23,11,0,0
+129,"Radiation Hazard",2,11,11,0,0
+130,"Chemical Green",2,24,11,0,0
+131,"Nuclear Waste",2,32,11,0,0
+132,"Contamination",2,7,11,0,0
+133,"Hot Shot",2,4,11,0,0
+134,"Fallout Warning",2,19,11,0,0
+135,"Twilight Galaxy",5,5,12,0,0
+136,"Hot Rod",5,16,12,0,0
+137,"Bulldozer",4,19,12,0,0
+138,"Duelist",4,3,12,0,0
+139,"Fade",3,21,12,0,0
+140,"Whiteout",3,7,12,0,0
+141,"Full Stop",3,22,12,0,0
+142,"Nitro",3,4,12,0,0
+143,"Emerald",3,1,12,0,0
+144,"Night",2,2,12,0,0
+145,"Urban Rubble",2,15,12,0,0
+146,"Para Green",2,9,12,0,0
+147,"Army Sheen",1,18,12,0,0
+148,"Army Sheen",1,1,12,0,0
+149,"Impact Drill",1,31,12,0,0
+150,"Seabird",1,27,12,0,0
+151,"Neon Rider",6,21,13,0,0
+152,"Hyper Beast",6,16,13,0,0
+153,"Djinn",5,13,13,0,0
+154,"Eco",5,15,13,0,0
+159,"Worm God",4,12,13,0,0
+163,"Bronze Deco",3,2,13,0,0
+164,"Armor Core",3,22,13,0,0
+170,"Monkey Business",5,4,13,0,0
+171,"Grand Prix",4,26,13,0,0
+172,"Pole Position",4,1,13,0,0
+173,"Heat",4,27,13,0,0
+175,"Origami",3,29,13,0,0
+176,"Man-o'-war",3,32,13,0,0
+177,"Valence",3,7,13,0,0
+180,"Elite Build",3,10,13,0,0
+181,"Chatterbox",6,15,14,0,0
+182,"Man-o'-war",6,12,14,0,0
+183,"Muertos",5,7,14,0,0
+184,"龍王 (Dragon King)",5,17,14,0,0
+185,"Cartel",5,10,14,0,0
+186,"Malachite",4,21,14,0,0
+187,"Serenity",4,29,14,0,0
+188,"Urban Shock",4,3,14,0,0
+189,"Naga",4,2,14,0,0
+190,"Catacombs",3,5,14,0,0
+191,"System Lock",3,31,14,0,0
+192,"Quicksilver",3,30,14,0,0
+193,"Deadly Poison",3,23,14,0,0
+194,"Grotto",3,18,14,0,0
+195,"Dragon Lore",6,12,15,0,0
+196,"Knight",5,16,15,0,0
+197,"Hand Cannon",4,2,15,0,0
+198,"Chalice",4,1,15,0,0
+199,"Dark Age",3,23,15,0,0
+200,"Chainmail",3,6,15,0,0
+201,"Royal Blue",2,9,15,0,0
+202,"Green Apple",2,28,15,0,0
+203,"Silver",2,27,15,0,0
+204,"Rust Coat",2,29,15,0,0
+205,"Storm",1,25,15,0,0
+206,"Indigo",1,26,15,0,0
+207,"Indigo",1,21,15,0,0
+208,"Storm",1,18,15,0,0
+209,"Briar",1,3,15,0,0
+210,"Amber Fade",4,6,16,0,0
+211,"Damascus Steel",3,19,16,0,0
+212,"Brass",3,24,16,0,0
+213,"VariCamo",3,16,16,0,0
+214,"Snake Camo",2,29,16,0,0
+215,"Safari Mesh",2,10,16,0,0
+216,"Orange Peel",2,4,16,0,0
+217,"Palm",2,21,16,0,0
+218,"VariCamo",2,8,16,0,0
+219,"Desert Storm",1,14,16,0,0
+220,"Sand Dune",1,7,16,0,0
+221,"Sand Mesh",1,18,16,0,0
+222,"Sand Spray",1,25,16,0,0
+223,"Sand Dashed",1,23,16,0,0
+224,"Predator",1,28,16,0,0
+225,"Brass",4,5,17,0,0
+226,"Scorpion",4,6,17,0,0
+227,"Blaze",4,2,17,0,0
+228,"Copper",3,29,17,0,0
+229,"Copperhead",3,11,17,0,0
+230,"Snake Camo",3,12,17,0,0
+231,"Predator",2,10,17,0,0
+232,"Palm",2,18,17,0,0
+233,"Desert Storm",2,17,17,0,0
+234,"Death by Kitty",6,25,18,0,0
+235,"BOOM",5,12,18,0,0
+236,"Red Laminate",5,10,18,0,0
+237,"Orange DDPAT",4,15,18,0,0
+238,"Splash",4,7,18,0,0
+239,"Orange DDPAT",4,29,18,0,0
+240,"Memento",3,27,18,0,0
+241,"Doomkitty",3,13,18,0,0
+242,"Faded Zebra",3,17,18,0,0
+243,"X-Ray",6,17,19,0,0
+244,"Cobalt Disruption",5,2,19,0,0
+245,"Electric Hive",5,12,19,0,0
+246,"Afterimage",5,13,19,0,0
+247,"Blue Laminate",4,10,19,0,0
+248,"Blind Spot",4,25,19,0,0
+249,"Blue Titanium",3,15,19,0,0
+250,"Water Sigil",3,24,19,0,0
+251,"Ghost Camo",3,28,19,0,0
+252,"Azure Zebra",3,14,19,0,0
+253,"Steel Disruption",3,7,19,0,0
+254,"Nightshade",3,4,19,0,0
+255,"Bullet Rain",6,17,20,0,0
+256,"Jaguar",6,10,20,0,0
+257,"Corticera",5,6,20,0,0
+258,"Corticera",5,12,20,0,0
+259,"Bloomstick",5,28,20,0,0
+260,"Bengal Tiger",5,11,20,0,0
+261,"Crimson Web",4,2,20,0,0
+262,"Steel Disruption",4,5,20,0,0
+263,"Ocean Foam",4,22,20,0,0
+264,"Blue Streak",4,24,20,0,0
+265,"Virus",4,25,20,0,0
+266,"Red Python",3,30,20,0,0
+267,"Bratatat",3,32,20,0,0
+268,"Hexane",3,1,20,0,0
+269,"Blood Tiger",3,9,20,0,0
+270,"Ultraviolet",3,21,20,0,0
+271,"Dark Water",3,20,20,0,0
+272,"Hyper Beast",6,12,21,0,0
+273,"Aquamarine Revenge",6,10,21,0,0
+274,"Cyrex",5,19,21,0,0
+275,"Nemesis",5,22,21,0,0
+276,"Yellow Jacket",5,1,21,0,0
+277,"Handgun",4,6,21,0,0
+278,"Loudmouth",4,32,21,0,0
+279,"Ruby Poison Dart",4,23,21,0,0
+280,"Evil Daimyo",4,17,21,0,0
+281,"Neural Net",4,13,21,0,0
+282,"Torque",3,9,21,0,0
+283,"Riot",3,26,21,0,0
+284,"Elite Build",3,25,21,0,0
+285,"Ranger",3,28,21,0,0
+286,"Bunsen Burner",3,5,21,0,0
+287,"Rocket Pop",3,15,21,0,0
+288,"Medusa",6,12,22,0,0
+289,"Poseidon",5,17,22,0,0
+290,"Chronos",4,14,22,0,0
+291,"Icarus Fell",4,16,22,0,0
+292,"Minotaur's Labyrinth",3,26,22,0,0
+293,"Pandora's Box",3,23,22,0,0
+294,"Hades",2,8,22,0,0
+295,"Pathfinder",2,6,22,0,0
+296,"Sun in Leo",2,12,22,0,0
+297,"Shipping Forecast",2,31,22,0,0
+298,"Asterion",1,22,22,0,0
+299,"Daedalus",1,11,22,0,0
+300,"Moon in Libra",1,3,22,0,0
+301,"Moon in Libra",1,28,22,0,0
+302,"Desert-Strike",6,17,23,0,0
+303,"Vulcan",6,10,23,0,0
+304,"Caiman",5,9,23,0,0
+305,"Atomic Alloy",5,16,23,0,0
+306,"Cyrex",5,18,23,0,0
+307,"Orion",5,9,23,0,0
+308,"Tatter",4,21,23,0,0
+309,"Torque",4,11,23,0,0
+310,"Antique",4,24,23,0,0
+311,"Curse",4,21,23,0,0
+312,"Heaven Guard",4,30,23,0,0
+313,"Twist",3,1,23,0,0
+314,"Module",3,25,23,0,0
+315,"Pulse",3,6,23,0,0
+316,"Isaac",3,8,23,0,0
+317,"Slashed",3,20,23,0,0
+318,"Retribution",3,3,23,0,0
+319,"Kami",3,15,23,0,0
+320,"Desert Warfare",3,25,23,0,0
+321,"Poison Dart",3,1,23,0,0
+322,"Brass",3,8,24,0,0
+323,"Anodized Navy",3,3,24,0,0
+324,"Tornado",2,17,24,0,0
+325,"Gunsmoke",2,7,24,0,0
+326,"Walnut",1,28,24,0,0
+327,"Sand Dune",1,27,24,0,0
+328,"Pit Viper",4,12,25,0,0
+329,"Full Stop",3,29,25,0,0
+330,"Candy Apple",3,5,25,0,0
+331,"Anodized Navy",3,22,25,0,0
+332,"CaliCamo",2,30,25,0,0
+333,"Boreal Forest",2,16,25,0,0
+334,"Gunsmoke",2,26,25,0,0
+335,"Granite Marbleized",2,6,25,0,0
+336,"Stained",2,3,25,0,0
+337,"Candy Apple",2,28,25,0,0
+338,"Groundwater",1,8,25,0,0
+339,"Contractor",1,11,25,0,0
+340,"Colony",1,13,25,0,0
+341,"Sand Dune",1,28,25,0,0
+342,"Sand Dashed",1,24,25,0,0
+343,"Cobalt Quartz",4,3,26,0,0
+344,"Night Ops",3,9,26,0,0
+345,"Teardown",3,25,26,0,0
+346,"Anodized Navy",3,19,26,0,0
+347,"Mudder",2,2,26,0,0
+348,"Safari Mesh",2,12,26,0,0
+349,"Night Ops",2,24,26,0,0
+350,"Cyanospatter",2,13,26,0,0
+351,"Blue Steel",2,30,26,0,0
+352,"Boreal Forest",1,7,26,0,0
+353,"Blue Spruce",1,30,26,0,0
+354,"Storm",1,11,26,0,0
+355,"Sage Spray",1,15,26,0,0
+356,"Waves Perforated",1,19,26,0,0
+357,"Jungle Dashed",1,14,26,0,0
+358,"Splash Jam",5,18,27,0,0
+359,"Modern Hunter",4,17,27,0,0
+360,"Modern Hunter",3,28,27,0,0
+361,"Modern Hunter",3,24,27,0,0
+362,"Blaze Orange",3,30,27,0,0
+363,"Modern Hunter",3,7,27,0,0
+364,"Blaze Orange",3,28,27,0,0
+365,"Grassland Leaves",2,6,27,0,0
+366,"Forest Leaves",1,24,27,0,0
+367,"Tornado",1,21,27,0,0
+368,"Grassland",1,30,27,0,0
+369,"Bulldozer",4,27,28,0,0
+370,"Amber Fade",3,21,28,0,0
+371,"Blaze",3,26,28,0,0
+372,"Hot Rod",3,23,28,0,0
+373,"CaliCamo",2,32,28,0,0
+374,"Tropical Storm",2,20,28,0,0
+375,"Gator Mesh",2,19,28,0,0
+376,"Groundwater",2,5,28,0,0
+377,"Orange Peel",2,22,28,0,0
+378,"Bone Mask",1,7,28,0,0
+379,"Contractor",1,4,28,0,0
+380,"Colony",1,11,28,0,0
+381,"Safari Mesh",1,14,28,0,0
+382,"Scorched",1,25,28,0,0
+383,"Hunting Blind",1,15,28,0,0
+384,"Nuclear Threat",4,8,29,0,0
+385,"Nuclear Threat",4,7,29,0,0
+386,"Radiation Hazard",3,17,29,0,0
+387,"Fallout Warning",2,30,29,0,0
+388,"Fallout Warning",2,26,29,0,0
+389,"Fallout Warning",2,25,29,0,0
+390,"Irradiated Alert",1,24,29,0,0
+391,"Irradiated Alert",1,29,29,0,0
+392,"Irradiated Alert",1,27,29,0,0
+393,"Whiteout",3,22,30,0,0
+394,"Silver",3,6,30,0,0
+395,"Blizzard Marbleized",2,31,30,0,0
+396,"Arctic Camo",2,14,30,0,0
+397,"Winter Forest",2,15,30,0,0
+398,"Contrast Spray",1,13,30,0,0
+399,"Master Piece",5,16,31,0,0
+400,"Pink DDPAT",4,12,31,0,0
+401,"Road Rash",4,9,31,0,0
+402,"Nitro",3,1,31,0,0
+403,"VariCamo Blue",3,30,31,0,0
+404,"Detour",3,20,31,0,0
+405,"Urban DDPAT",2,2,31,0,0
+406,"Gunsmoke",2,22,31,0,0
+407,"Night",2,5,31,0,0
+408,"Grassland",2,6,31,0,0
+409,"Sage Spray",1,29,31,0,0
+410,"Scorched",1,26,31,0,0
+411,"Contrast Spray",1,31,31,0,0
+412,"Storm",1,27,31,0,0
+413,"Storm",1,23,31,0,0
+414,"Asiimov",6,12,32,0,0
+415,"Chameleon",6,11,32,0,0
+416,"Redline",5,10,32,0,0
+417,"Trigon",5,25,32,0,0
+418,"Antique",5,28,32,0,0
+419,"Heat",4,21,32,0,0
+420,"Pulse",4,19,32,0,0
+421,"Sergeant",4,13,32,0,0
+422,"Guardian",4,9,32,0,0
+423,"Corporal",3,26,32,0,0
+424,"Terrain",3,32,32,0,0
+425,"Sandstorm",3,8,32,0,0
+426,"Heaven Guard",3,27,32,0,0
+427,"Akihabara Accept",6,11,33,0,0
+428,"Hydroponic",5,10,33,0,0
+429,"Neon Kimono",4,4,33,0,0
+430,"Sunset Storm 壱",4,2,33,0,0
+431,"Daybreak",4,17,33,0,0
+432,"Aqua Terrace",3,15,33,0,0
+433,"Counter Terrace",3,27,33,0,0
+434,"Terrace",3,8,33,0,0
+435,"Crimson Kimono",2,7,33,0,0
+436,"Midnight Storm",2,2,33,0,0
+437,"Bamboo Print",1,24,33,0,0
+438,"Bamboo Shadow",1,29,33,0,0
+439,"Bamboo Forest",1,8,33,0,0
+440,"Orange Kimono",1,14,33,0,0
+441,"Mint Kimono",1,7,33,0,0
+442,"Nitro",4,16,34,0,0
+443,"Acid Fade",3,20,34,0,0
+444,"Silver Quartz",3,4,34,0,0
+445,"Teardown",3,13,34,0,0
+446,"VariCamo",2,14,34,0,0
+447,"Gator Mesh",2,31,34,0,0
+448,"VariCamo",2,15,34,0,0
+449,"Forest Leaves",2,9,34,0,0
+450,"Condemned",2,11,34,0,0
+451,"Orange Peel",2,23,34,0,0
+452,"Contractor",1,3,34,0,0
+453,"Contractor",1,18,34,0,0
+454,"Blue Spruce",1,20,34,0,0
+455,"Army Mesh",1,8,34,0,0
+456,"Army Recon",1,22,34,0,0
+457,"Red Quartz",4,8,35,0,0
+458,"Urban Rubble",3,2,35,0,0
+459,"Amber Fade",3,29,35,0,0
+460,"Metallic DDPAT",2,7,35,0,0
+461,"Metallic DDPAT",2,27,35,0,0
+462,"Carbon Fiber",2,18,35,0,0
+463,"Ash Wood",2,25,35,0,0
+464,"Candy Apple",2,21,35,0,0
+465,"Urban DDPAT",2,17,35,0,0
+466,"Urban DDPAT",1,26,35,0,0
+467,"Colony",1,3,35,0,0
+468,"Polar Camo",1,14,35,0,0
+469,"Forest Night",1,4,35,0,0
+470,"Polar Mesh",1,28,35,0,0
+471,"Urban Dashed",1,24,35,0,0
+472,"Wasteland Rebel",6,10,36,0,0
+473,"Fire Elemental",6,6,36,0,0
+474,"Cartel",5,7,36,0,0
+475,"Cardiac",5,18,36,0,0
+476,"Tranquility",5,30,36,0,0
+477,"Grinder",4,5,36,0,0
+478,"Basilisk",4,16,36,0,0
+479,"Griffin",4,17,36,0,0
+480,"Highwayman",4,29,36,0,0
+481,"Urban Hazard",3,4,36,0,0
+482,"Murky",3,14,36,0,0
+483,"Firestarter",3,27,36,0,0
+484,"Dart",3,23,36,0,0
+485,"Delusion",3,26,36,0,0
+486,"Demolition",4,3,37,0,0
+487,"Black Laminate",3,10,37,0,0
+488,"Glacier Mesh",3,25,37,0,0
+489,"Carbon Fiber",2,24,37,0,0
+490,"Urban DDPAT",1,21,37,0,0
+491,"Urban Perforated",1,30,37,0,0
+492,"Asiimov",6,17,38,0,0
+493,"The Kraken",6,29,38,0,0
+494,"Guardian",5,16,38,0,0
+495,"Mehndi",5,7,38,0,0
+496,"Redline",5,12,38,0,0
+497,"Pulse",4,13,38,0,0
+498,"Marina",4,3,38,0,0
+499,"Rose Iron",4,23,38,0,0
+500,"Rising Skull",4,28,38,0,0
+501,"Sandstorm",3,15,38,0,0
+502,"Kami",3,4,38,0,0
+503,"Magma",3,31,38,0,0
+504,"Cobalt Halftone",3,24,38,0,0
+506,"Scumbria",3,30,39,0,0
+507,"Green Marine",3,18,39,0,0
+508,"Cobalt Core",3,27,39,0,0
+509,"Rangeen",3,21,39,0,0
+510,"Wraiths",3,5,39,0,0
+511,"Survivor Z",3,13,39,0,0
+512,"Dualing Dragons",3,3,39,0,0
+513,"Wingshot",4,7,39,0,0
+514,"Special Delivery",4,22,39,0,0
+515,"Nebula Crusader",4,31,39,0,0
+516,"Stone Cold",4,15,39,0,0
+517,"Big Iron",5,20,39,0,0
+518,"Flux",5,14,39,0,0
+519,"Frontside Misty",5,10,39,0,0
+520,"Kill Confirmed",6,9,39,0,0
+521,"Golden Coil",6,16,39,0,0

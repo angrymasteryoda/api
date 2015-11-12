@@ -4,6 +4,10 @@ import com.michael.api.IO.Csv;
 import com.michael.api.IO.CsvRecord;
 import com.michael.api.IO.IO;
 import com.michael.api.db.MySqlDatabase;
+import com.michael.api.math.EquationSolver;
+import com.michael.api.security.AES;
+import com.michael.api.security.Hashing;
+import com.michael.api.security.TextImage;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -16,19 +20,25 @@ import java.sql.Statement;
  */
 public class Tester {
 	public static void main( String[] args ) throws Exception {
-		MySqlDatabase db = new MySqlDatabase( "jdbc:mysql://localhost:3306/csgo", "root", "", "local" );
-		Connection conn = db.getConnection();
-		Statement state = conn.createStatement();
-		ResultSet res = null;
-		res = state.executeQuery( "SELECT * FROM guns" );
+//		MySqlDatabase db = new MySqlDatabase( "jdbc:mysql://localhost:3306/csgo", "root", "", "local" );
+//		Connection conn = db.getConnection();
+//		Statement state = conn.createStatement();
+//		ResultSet res = null;
+//		res = state.executeQuery( "SELECT * FROM guns" );
+//
+//		Csv csv = new Csv( "test.csv");
+//		csv.setHeader( res );
+//		csv.fetchResultSet( res );
+//		csv.write();
+//		res.close();
+//		state.close();
+//		conn.close();
 
-		Csv csv = new Csv( "test.csv");
-		csv.setHeader( res );
-		csv.fetchResultSet( res, "" );
-		csv.write();
-		res.close();
-		state.close();
-		conn.close();
+		TextImage.writeString( "asd", "test.png");
+//		BaseConversions.setPrettyPrint( true );
+//		IO.println( BaseConversions.decimalToBinary( -12341 ) );
+//		IO.println( BaseConversions.decimalToBinary( 12341 ) );
+//		IO.println( BaseConversions.decimalToBaseN( 1.8, 2 ) );
 //		Csv csv = new Csv( "test.csv" );
 //		csv.setHeader( new Object[]{ "string", "number", "bool" } );
 //		csv.put( new Object[]{ "string1", 1, true } );
