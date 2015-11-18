@@ -21,22 +21,26 @@ public class JLabels {
 	}
 
 
-	public void add( int index, JLabel label ){
+	public JLabel add( int index, JLabel label ){
 		labels.add( index, label );
+		return label;
 	}
 
-	public void add( JLabel label ){
+	public JLabel add( JLabel label ){
 		labels.add( label );
+		return label;
 	}
 
-	public void add( String text ){
+	public JLabel add( String text ){
 		JLabel label = new JLabel( text );
 		labels.add( label );
+		return label;
 	}
 
-	public void add( int index, String text ){
+	public JLabel add( int index, String text ){
 		JLabel label = new JLabel( text );
 		labels.add( index, label );
+		return label;
 	}
 
 	public JLabel get( int index ){

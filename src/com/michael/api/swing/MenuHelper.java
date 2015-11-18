@@ -18,10 +18,31 @@ public class MenuHelper {
 	public MenuHelper() {
 	}
 
+	/**
+	 * Create a menu item and add it to menu
+	 * @param menu menu to add item to
+	 * @param type type of menu
+	 * @param text displayed text
+	 * @param command the action command string
+	 * @param acceleratorKey shortcut key
+	 * @param action action listener
+	 * @return menu item created
+	 */
 	public static JMenuItem createMenuItem( JMenu menu, int type, String text, String command, int acceleratorKey, ActionListener action ) {
 		return createMenuItem( menu, type, text, command, null, acceleratorKey, null, action );
 	}
 
+	/**
+	 * Create a menu item and add it to menu
+	 * @param menu menu to add item to
+	 * @param type type of menu
+	 * @param text displayed text
+	 * @param command the action command string
+	 * @param acceleratorKey shortcut key
+	 * @param toolTip string for tooltip
+	 * @param action action listener
+	 * @return menu item created
+	 */
 	public static JMenuItem createMenuItem( JMenu menu, int type, String text, String command, int acceleratorKey, String toolTip, ActionListener action ) {
 		return createMenuItem( menu, type, text, command, null, acceleratorKey, toolTip, action );
 	}
