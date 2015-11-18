@@ -1,9 +1,12 @@
 package com.michael.api.security;
 
+import com.michael.api.IO.IO;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Created with IntelliJ IDEA.
@@ -55,6 +58,55 @@ public class TextImage {
 	}
 
 	/**
+	 * Write a textImage with the text from a file
+	 * @param infile file to read from
+	 * @param file output file
+	 * @throws Exception
+	 */
+	public static void writeString( File infile, String file ) throws Exception{
+		InputStream is = IO.readFile( infile.getPath() );
+		long strLen = infile.length();
+		strLen /= 3;
+		int rows = nearestSquare( strLen );
+		int rowsLen = rows;
+
+		if ( !perfectSquare( strLen ) ) {
+			long remaining = ( strLen ) - ( rows * rows );
+			while( true ){
+				if ( remaining - rows > 0 ) {
+					rows++;
+					remaining -= rowsLen;
+				} else if ( remaining - rows < 0 ) {
+					rows++;
+					break;
+				}
+			}
+		}
+
+		BufferedImage img = new BufferedImage( rowsLen, rows, BufferedImage.TYPE_INT_RGB );
+		int i = 0;
+		for ( int r = 0; r < rows; r++ ) {
+			for ( int c = 0; c < rows; c++ ) {
+				try {
+					char[] chars = new char[3];
+					chars[0] = (char)is.read();  i++;
+					chars[1] = (char)is.read();  i++;
+					chars[2] = (char)is.read();  i++;
+					int color = ( (int)chars[0] << 16 ) | ( (int)chars[1] << 8 ) | (int)chars[2];
+					img.setRGB( r, c, color );
+				} catch ( Exception ignore ) {}
+			}
+		}
+
+		File f = new File( "text.png" );
+		try {
+			ImageIO.write( img, "PNG", f );
+		} catch ( IOException e ) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
 	 * writes a string into an image
 	 * @param str string to be written
 	 * @param file file location to save
@@ -101,7 +153,7 @@ public class TextImage {
 //			System.out.println();
 		}
 
-		File f = new File( "text.png" );
+		File f = new File( file );
 		try {
 			ImageIO.write( img, "PNG", f );
 		} catch ( IOException e ) {
@@ -120,8 +172,27 @@ public class TextImage {
 		}
 	}
 
+	private static int nearestSquare( long a ) {
+		double b = Math.sqrt( a );
+		int c;
+		if ( b - Math.floor( b ) != 0 ) {
+			return nearestSquare( a - 1 );
+		} else {
+			c = (int) b;
+			return c;
+		}
+	}
+
 	private static boolean perfectSquare( int a ) {
 		float b = (float) Math.sqrt( a );
+		if ( b - (int) b != 0 ) {
+			return false;
+		}
+		return true;
+	}
+
+	private static boolean perfectSquare( long a ) {
+		double b = Math.sqrt( a );
 		if ( b - (int) b != 0 ) {
 			return false;
 		}

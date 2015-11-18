@@ -1,17 +1,7 @@
 package com.michael.api;
 
-import com.michael.api.IO.Csv;
-import com.michael.api.IO.CsvRecord;
 import com.michael.api.IO.IO;
-import com.michael.api.db.MySqlDatabase;
-import com.michael.api.math.EquationSolver;
-import com.michael.api.security.AES;
-import com.michael.api.security.Hashing;
-import com.michael.api.security.TextImage;
-
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import com.michael.api.math.Random;
 
 /**
  * Created By: Michael Risher
@@ -20,6 +10,7 @@ import java.sql.Statement;
  */
 public class Tester {
 	public static void main( String[] args ) throws Exception {
+		IO.println( Random.randomLowercaseLetters( 200 ) );
 //		MySqlDatabase db = new MySqlDatabase( "jdbc:mysql://localhost:3306/csgo", "root", "", "local" );
 //		Connection conn = db.getConnection();
 //		Statement state = conn.createStatement();
@@ -34,7 +25,7 @@ public class Tester {
 //		state.close();
 //		conn.close();
 
-		TextImage.writeString( "asd", "test.png");
+//		TextImage.writeString( "asd", "test.png");
 //		BaseConversions.setPrettyPrint( true );
 //		IO.println( BaseConversions.decimalToBinary( -12341 ) );
 //		IO.println( BaseConversions.decimalToBinary( 12341 ) );
