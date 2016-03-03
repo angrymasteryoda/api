@@ -10,21 +10,21 @@ import java.awt.*;
  */
 public abstract class ModalDialog {
 	protected JDialog dialog;
-	protected Frame parent = null;
+	protected Window parent = null;
 	protected String title = null;
 
 	public ModalDialog() {
 		this.dialog = new JDialog();
 	}
 
-	public ModalDialog( Frame parent, String title ) {
+	public ModalDialog( Window parent, String title ) {
 		this.dialog = new JDialog( parent, title );
 		this.parent = parent;
 		this.title = title;
 	}
 
-	public ModalDialog( Frame parent, String title, boolean modality ) {
-		this.dialog = new JDialog( parent, title, modality );
+	public ModalDialog( Window parent, String title, boolean modality ) {
+		this.dialog = new JDialog( parent, title, modality ? JDialog.DEFAULT_MODALITY_TYPE : Dialog.ModalityType.MODELESS );
 		this.parent = parent;
 		this.title = title;
 	}

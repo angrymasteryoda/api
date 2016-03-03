@@ -1,24 +1,19 @@
 package com.michael.api.db;
 
-import com.mongodb.*;
-
-import java.net.UnknownHostException;
-import java.util.Arrays;
-
 /**
  * Created by: Michael Risher
  * Date: 3/3/15
  * Time: 7:59 PM
  */
-public class MongoDatabase {
+public class MtMongoDatabase {
 	private String host;
 	private String database;
 	private int port;
 	private String user;
 	private String pass;
-	private DB db;
+//	private DB db;
 
-	public MongoDatabase( String host, String database, int port, String user, String pass ) {
+	public MtMongoDatabase( String host, String database, int port, String user, String pass ) {
 		this.host = host;
 		this.database = database;
 		this.port = port;
@@ -26,11 +21,13 @@ public class MongoDatabase {
 		this.pass = pass;
 	}
 
-	public MongoDatabase( String host, String database ) {
+	public MtMongoDatabase( String host, String database ) {
 		this( host, database, 27017, null, null );
 	}
 //todo finish this
 	public void initConnection(){
+
+		/*
 		try {
 			MongoClient mongo = null;
 			if ( user == null && pass == null ) {
@@ -43,11 +40,13 @@ public class MongoDatabase {
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
+
+		*/
 	}
 
-	public DBCollection getCollection( String collection ){
-		return db.getCollection( collection );
-	}
+//	public DBCollection getCollection( String collection ){
+//		return db.getCollection( collection );
+//	}
 
 	public String getHost() {
 		return host;
@@ -81,9 +80,9 @@ public class MongoDatabase {
 		this.pass = pass;
 	}
 
-	public DB db() {
-		return db;
-	}
+//	public DB db() {
+//		return db;
+//	}
 
 	public int getPort() {
 		return port;

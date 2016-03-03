@@ -1,16 +1,21 @@
 package com.michael.api.email;
 
+import com.michael.api.json.JSONException;
+import com.michael.api.json.JSONObject;
+
+import java.io.File;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.mail.Message;
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.*;
 import javax.mail.Message.RecipientType;
-import javax.mail.MessagingException;
-import javax.mail.Multipart;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
@@ -23,19 +28,188 @@ import javax.mail.internet.MimeMultipart;
  * Time: 7:29 PM
  */
 public class Emailer {
+	private HashMap<String, String> props = new HashMap<>();
+
+	public Emailer() {
+		this.props.put( "mail.smtp.auth", "true" );
+		this.props.put( "mail.smtp.starttls.enable", "true" );
+		this.props.put( "mail.smtp.host", "smtp.gmail.com" );
+		this.props.put( "mail.smtp.port", "587" );
+	}
+
+	public Emailer( HashMap<String, String> props ) {
+		this.props.put( "mail.smtp.auth", "true" );
+		this.props.put( "mail.smtp.starttls.enable", "true" );
+		this.props.put( "mail.smtp.host", "smtp.gmail.com" );
+		this.props.put( "mail.smtp.port", "587" );
+
+		for ( Map.Entry<String, String> entry : props.entrySet() ) {
+			String key = entry.getKey();
+			String value = entry.getValue();
+			this.props.put( key, value );
+		}
+	}
+
+	/**
+	 *
+	 * @param values Json object of required details example listed below
+	 * @param props Allows user to insert the smtp properties themselves
+	 * @throws MessagingException
+	 * @throws JSONException
+	 * {
+	 *		from : "me@host.com",
+	 *		password : "mypassword",
+	 *		to : [ "them@host.com" ],
+	 *		cc : [ "them@host.com" ],
+	 *		bcc : [ "them@host.com" ],
+	 *		message : "message",
+	 *		subject : "subject",
+	 *		filename : "filename" | null
+	 * }
+	 */
+	public void send( final JSONObject values, Properties props ) throws MessagingException, JSONException {
+		if ( props == null ) {
+			props.put( "mail.smtp.auth", this.props.get( "mail.smtp.auth" ) );
+			props.put( "mail.smtp.starttls.enable", this.props.get( "mail.smtp.starttls.enable" ) );
+			props.put( "mail.smtp.host", this.props.get( "mail.smtp.host" ) );
+			props.put( "mail.smtp.port", this.props.get( "mail.smtp.port" ) );
+		}
+
+		Session session = Session.getInstance( props,
+				new Authenticator() {
+					protected PasswordAuthentication getPasswordAuthentication() {
+						return new PasswordAuthentication( values.getString( "from" ), values.getString( "password" ) );
+					}
+				}
+		);
+
+		Message message = new MimeMessage( session );
+		message.setFrom( new InternetAddress( values.getString( "from" ) ) );
+		String[] to = Arrays.copyOf( values.getJSONArray( "to" ).getArray(), values.getJSONArray( "to" ).getArray().length, String[].class );
+		for ( int i = 0; i < to.length; i++ ) {
+			if ( to[i] != null ) {
+				message.addRecipients( RecipientType.TO, InternetAddress.parse( to[i] ) );
+			}
+		}
+		String[] cc = Arrays.copyOf( values.getJSONArray( "cc" ).getArray(), values.getJSONArray( "cc" ).getArray().length, String[].class );
+		for ( int i = 0; i < cc.length; i++ ) {
+			if ( !cc[i].isEmpty() ) {
+				message.setRecipients( Message.RecipientType.CC, InternetAddress.parse( cc[i] ) );
+			}
+		}
+
+		String[] bcc = Arrays.copyOf( values.getJSONArray( "bcc" ).getArray(), values.getJSONArray( "bcc" ).getArray().length, String[].class );
+		for ( int i = 0; i < bcc.length; i++ ) {
+			if ( !bcc[i].isEmpty() ) {
+				message.setRecipients( Message.RecipientType.BCC, InternetAddress.parse( bcc[i] ) );
+			}
+		}
+
+		message.setSubject( values.getString( "subject" ) );
+
+		/* following http://www.tutorialspoint.com/javamail_api/javamail_api_send_email_with_attachment.htm
+		to make the attachment part
+		 */
+
+		BodyPart messageBodyPart = new MimeBodyPart();
+		//this is the actual message
+		messageBodyPart.setText( values.getString( "message" ) );
+		//this part is the attachment
+		Multipart multipart = new MimeMultipart();
+		//add the message to the email
+		multipart.addBodyPart( messageBodyPart );
+
+		String filename = (String) values.opt( "filename" );
+		if ( filename != null ) {
+			messageBodyPart = new MimeBodyPart();
+			DataSource source = new FileDataSource( filename );
+			messageBodyPart.setDataHandler( new DataHandler( source ) );
+			messageBodyPart.setFileName( new File( filename ).getName() );
+
+			//add the attachment
+			multipart.addBodyPart( messageBodyPart );
+		}
+
+		//add the multipart to message
+		message.setContent( multipart );
+
+		Transport.send( message );
+		Logger.getLogger( Emailer.class.getName() ).log( Level.INFO, "Email sent succesfully" );
+	}
+
+	/**
+	 * @param values Json object of required details example listed below
+	 * @throws MessagingException
+	 * @throws JSONException
+	 * {
+	 *		from : "me@host.com",
+	 *		password : "mypassword",
+	 *		to : [ "them@host.com" ],
+	 *		cc : [ "them@host.com" ],
+	 *		bcc : [ "them@host.com" ],
+	 *		message : "message",
+	 *		subject : "subject",
+	 *		filename : "filename" | null
+	 * }
+	 */
+	public void send( final JSONObject values ) throws MessagingException, JSONException {
+		send( values, null );
+	}
+
+	/**
+	 * set the host you want to send to. returns false if host you entered was not found
+	 * @param host the domain of the provider ( ie gmail, yahoo, outlook, aol, zoho, mail, yandex )
+	 * @return true if found host and set settings
+	 */
+	public boolean setHost( String host ) {
+		switch ( host ) {
+			case "gmail":
+				this.props.put( "mail.smtp.host", "smtp.gmail.com" );
+				this.props.put( "mail.smtp.port", "587" );
+				return true;
+			case "yahoo":
+				this.props.put( "mail.smtp.debug", "true" );
+				this.props.put( "mail.smtp.host", "smtp.mail.yahoo.com" );
+				this.props.put( "mail.smtp.port", "587" );
+				return true;
+			case "outlook":
+				props.put( "mail.smtp.debug", "true" );
+				props.put( "mail.smtp.host", "smtp.office365.com" );
+				props.put( "mail.smtp.port", "587" );
+				return true;
+			case "aol":
+				props.put( "mail.smtp.host", "smtp.aol.com" );
+				props.put( "mail.smtp.port", "25" );
+				return true;
+			case "zoho":
+				props.put( "mail.smtp.host", "smtp.zoho.com" );
+				props.put( "mail.smtp.port", "465" );
+				return true;
+			case "mail":
+				props.put( "mail.smtp.host", "smtp.mail.com" );
+				props.put( "mail.smtp.port", "587" );
+				return true;
+			case "yandex":
+				props.put( "mail.smtp.host", "smtp.yandex.com" );
+				props.put( "mail.smtp.port", "465" );
+				return true;
+			default : return false;
+		}
+	}
 
 
 	/**
 	 * Sends email via gmail
-	 *
-	 * @param gmail
-	 * @param pass
+	 * @deprecated  3/2/16
+	 * @param gmail   email to send from
+	 * @param pass    senders password
 	 * @param to
 	 * @param subject
 	 * @param msg
 	 * @throws MessagingException
+	 * @paran filename
 	 */
-	private static void Gmail( final String gmail, final String pass, String[] to, String[] cc, String[] bcc, String subject, String msg ) throws MessagingException {
+	private static void Gmail( final String gmail, final String pass, String[] to, String[] cc, String[] bcc, String subject, String msg, String filename ) throws MessagingException {
 
 
 		Properties props = new Properties();
@@ -49,8 +223,8 @@ public class Emailer {
 					protected PasswordAuthentication getPasswordAuthentication() {
 						return new PasswordAuthentication( gmail, pass );
 					}
-				} );
-
+				}
+		);
 
 		Message message = new MimeMessage( session );
 		message.setFrom( new InternetAddress( gmail ) );
@@ -74,7 +248,30 @@ public class Emailer {
 
 		message.setSubject( subject );
 
-		message.setText( msg );
+		/* following http://www.tutorialspoint.com/javamail_api/javamail_api_send_email_with_attachment.htm
+		to make the attachment part
+		 */
+
+		BodyPart messageBodyPart = new MimeBodyPart();
+		//this is the actual message
+		messageBodyPart.setText( msg );
+		//this part is the attachment
+		Multipart multipart = new MimeMultipart();
+		//add the message to the email
+		multipart.addBodyPart( messageBodyPart );
+
+		if ( filename != null ) {
+			messageBodyPart = new MimeBodyPart();
+			DataSource source = new FileDataSource( filename );
+			messageBodyPart.setDataHandler( new DataHandler( source ) );
+			messageBodyPart.setFileName( new File( filename ).getName() );
+
+			//add the attachment
+			multipart.addBodyPart( messageBodyPart );
+		}
+
+		//add the multipart to message
+		message.setContent( multipart );
 
 		Transport.send( message );
 		Logger.getLogger( Emailer.class.getName() ).log( Level.INFO, "Email sent succesfully" );
@@ -83,7 +280,7 @@ public class Emailer {
 
 	/**
 	 * Used to send the email through gmail
-	 *
+	 * @deprecated  3/2/16
 	 * @param gmail
 	 * @param pass
 	 * @param to
@@ -92,20 +289,40 @@ public class Emailer {
 	 * @throws MessagingException
 	 */
 	public static void sendGmail( final String gmail, final String pass, String[] to, String[] cc, String[] bcc, String subject, String msg ) throws MessagingException {
-		Gmail( gmail, pass, to, cc, bcc, subject, msg );
+		Gmail( gmail, pass, to, cc, bcc, subject, msg, null );
 	}
 
+	/**
+	 * @deprecated  3/2/16
+	 */
+	public static void sendGmail( final String gmail, final String pass, String[] to, String[] cc, String[] bcc, String subject, String msg, String filename ) throws MessagingException {
+		Gmail( gmail, pass, to, cc, bcc, subject, msg, filename );
+	}
+
+	/**
+	 * @deprecated  3/2/16
+	 */
+	public static void sendGmail( final String gmail, final String pass, String to, String cc, String bcc, String subject, String msg, String filename ) throws MessagingException {
+		String[] toArray = {to};
+		String[] ccArray = {cc};
+		String[] bccArray = {bcc};
+		Gmail( gmail, pass, toArray, ccArray, bccArray, subject, msg, filename );
+	}
+
+	/**
+	 * @deprecated  3/2/16
+	 */
 	public static void sendGmail( final String gmail, final String pass, String to, String cc, String bcc, String subject, String msg ) throws MessagingException {
-		String[] toArray = { to };
-		String[] ccArray = { cc };
-		String[] bccArray = { bcc };
-		Gmail( gmail, pass, toArray, ccArray, bccArray, subject, msg );
+		String[] toArray = {to};
+		String[] ccArray = {cc};
+		String[] bccArray = {bcc};
+		Gmail( gmail, pass, toArray, ccArray, bccArray, subject, msg, null );
 	}
 
 	/**
 	 * Sends email via yahoo
-	 *
-	 * @param user
+	 * @deprecated  3/2/16
+	 * @param gmail
 	 * @param pass
 	 * @param to
 	 * @param subject
@@ -113,94 +330,71 @@ public class Emailer {
 	 * @throws MessagingException
 	 * @throws AddressException
 	 */
-	private void Yahoo( final String user, final String pass, String[] to, String subject, String msg ) throws AddressException, MessagingException {
+	public static void Yahoo( final String gmail, final String pass, String[] to, String subject, String msg, String filename ) throws AddressException, MessagingException {
 		//TODO fix the yahoo Emailer so it idk works!
 
 		Properties props = new Properties();
-		props.put( "mail.transport.protocol", "smtps" );
 		props.put( "mail.smtp.auth", "true" );
+		props.put( "mail.smtp.starttls.enable", "true" );
+		props.put( "mail.smtp.debug", "true" );
 		props.put( "mail.smtp.host", "smtp.mail.yahoo.com" );
-		props.put( "mail.smtp.port", "465" );
+		props.put( "mail.smtp.port", "587" );
 
-		Session session = Session.getInstance( props,
-				new javax.mail.Authenticator() {
+		Session session = Session.getInstance( props, new Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication() {
-						return new PasswordAuthentication( user, pass );
+						return new PasswordAuthentication( gmail, pass );
 					}
-				} );
+				}
+		);
+
 		Message message = new MimeMessage( session );
-		message.setFrom( new InternetAddress( user ) );
+		message.setFrom( new InternetAddress( gmail ) );
 		for ( int i = 0; i < to.length; i++ ) {
 			if ( to[i] != null ) {
 				message.addRecipients( Message.RecipientType.TO, InternetAddress.parse( to[i] ) );
 			}
 		}
+//		for ( int i = 0; i < cc.length; i++ ) {
+//			if ( !cc[i].isEmpty() ) {
+//				message.setRecipients( Message.RecipientType.CC, InternetAddress.parse( cc[i] ) );
+//			}
+//		}
+//
+//		for ( int i = 0; i < bcc.length; i++ ) {
+//			if ( !bcc[i].isEmpty() ) {
+//				message.setRecipients( Message.RecipientType.BCC, InternetAddress.parse( bcc[i] ) );
+//			}
+//		}
+
 
 		message.setSubject( subject );
 
-		message.setText( msg );
+		/* following http://www.tutorialspoint.com/javamail_api/javamail_api_send_email_with_attachment.htm
+		to make the attachment part
+		 */
+
+		BodyPart messageBodyPart = new MimeBodyPart();
+		//this is the actual message
+		messageBodyPart.setText( msg );
+		//this part is the attachment
+		Multipart multipart = new MimeMultipart();
+		//add the message to the email
+		multipart.addBodyPart( messageBodyPart );
+
+		if ( filename != null ) {
+			messageBodyPart = new MimeBodyPart();
+			DataSource source = new FileDataSource( filename );
+			messageBodyPart.setDataHandler( new DataHandler( source ) );
+			messageBodyPart.setFileName( new File( filename ).getName() );
+
+			//add the attachment
+			multipart.addBodyPart( messageBodyPart );
+		}
+
+		//add the multipart to message
+		message.setContent( multipart );
 
 		Transport.send( message );
 		Logger.getLogger( Emailer.class.getName() ).log( Level.INFO, "Email sent succesfully" );
-
 	}
-
-	/**
-	 * Used to send the email through gmail
-	 *
-	 * @param user
-	 * @param pass
-	 * @param to
-	 * @param subject
-	 * @param msg
-	 * @throws MessagingException
-	 * @throws AddressException
-	 */
-	public void sendYahoo( final String user, final String pass, String[] to, String subject, String msg ) throws AddressException, MessagingException {
-		Yahoo( user, pass, to, subject, msg );
-	}
-
-	public static void test() throws MessagingException {
-		// Email message
-		String toAddress = "rishermichael@gmail.com";
-		String fromAddress = "rishermichael@yahoo.com";
-		String subject = "Hello Yahoo!";
-		String message = "From Java!";
-
-		// Auth.
-		String host = "smtp.mail.yahoo.com";
-		String port = "465";
-		String username = "rishermichael";
-		String password = "Mbr3363329";
-
-		// Configure your JavaMail.
-		Properties props = new Properties();
-		props.setProperty( "mail.transport.protocol", "smtps" );
-		props.setProperty( "mail.smtps.auth", "true" );
-		props.setProperty( "mail.host", host );
-		props.setProperty( "mail.port", port );
-		props.setProperty( "mail.user", username );
-		props.setProperty( "mail.password", password );
-
-		// Start an email session.
-		Session session = Session.getDefaultInstance( props, null );
-		Transport transport = session.getTransport( "smtp" );
-		MimeMessage mimeMessage = new MimeMessage( session );
-		Multipart multiPart = new MimeMultipart();
-
-		mimeMessage.setSubject( subject );
-		mimeMessage.addRecipient( RecipientType.TO, new InternetAddress( toAddress ) );
-		MimeBodyPart textBodyPart = new MimeBodyPart();
-		textBodyPart.setContent( message, "text/plain" );
-		multiPart.addBodyPart( textBodyPart );
-		mimeMessage.setContent( multiPart );
-		mimeMessage.setFrom( new InternetAddress( fromAddress ) );
-
-		// Send email.
-		transport.connect();
-		transport.sendMessage( mimeMessage, mimeMessage.getAllRecipients() );
-		transport.close();
-	}
-
-
 }

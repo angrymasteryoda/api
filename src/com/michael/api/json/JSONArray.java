@@ -155,6 +155,10 @@ public class JSONArray {
 		throw new JSONException( "JSONArray[" + i + "] not JSONObject" );
 	}
 
+	public Object[] getArray(){
+		return array.toArray();
+	}
+
 	public int length() {
 		return this.array.size();
 	}

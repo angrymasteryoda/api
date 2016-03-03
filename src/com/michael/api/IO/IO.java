@@ -209,19 +209,27 @@ public class IO {
 		System.out.println();
 	}
 
-	public static <T> void println( T out ){
-		System.out.println( out );
+	public static <T> void println( T...out ){
+		for( T x : out ){
+			System.out.println( x );
+		}
 	}
 
-	public static <T> void print( T out ){
-		System.out.print( out );
+	public static <T> void print( T...out ){
+		for( T x : out ) {
+			System.out.print( x );
+		}
 	}
 
-	public static <T> void printlnErr( T out ){
-		System.err.println( out );
+	public static <T> void printlnErr( T...out ) {
+		for( T x : out ) {
+			System.err.println( x );
+		}
 	}
 
-	public static <T> void printErr( T out ){
-		System.err.print( out );
+	public static <T> void printErr( T...out ){
+		for( T x : out ) {
+			System.err.print( x );
+		}
 	}
 }

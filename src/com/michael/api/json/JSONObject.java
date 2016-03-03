@@ -1,14 +1,8 @@
 package com.michael.api.json;
 
-import com.sun.istack.internal.NotNull;
-import com.sun.istack.internal.Nullable;
-
-import javax.swing.*;
-import java.io.IOException;
-import java.io.StringWriter;
-import java.io.Writer;
 import java.util.*;
 import java.util.Map.Entry;
+import java.util.concurrent.locks.Condition;
 
 /**
  * Created By: Michael Risher
@@ -197,10 +191,25 @@ public class JSONObject {
 
 	public JSONObject putOnce( String key, Object value ) throws JSONException {
 		if ( key != null && value != null ) {
-			if ( optional( key ) != null ) {
+			if ( opt( key ) != null ) {
 				throw new JSONException( "Duplicate key '" + key + "'" );
 			}
 			put( key, value );
+		}
+		return this;
+	}
+
+	public JSONObject putArray( String key, Object[] array ){
+		if ( key != null && array != null ) {
+			put( key, new JSONArray( array ) );
+		}
+		return this;
+	}
+
+	public JSONObject putArray( String key, Object val ){
+		Object[] arr = { val };
+		if ( key != null && val != null ) {
+			put( key, new JSONArray( arr ) );
 		}
 		return this;
 	}
@@ -210,7 +219,7 @@ public class JSONObject {
 			throw new JSONException( "null key" );
 		}
 
-		Object obj = this.optional( key );
+		Object obj = this.opt( key );
 		if ( obj == null ) {
 			throw new JSONException( "JSONObject[" + JSONWriter.quote( key ) + "] not found" );
 		}
@@ -289,10 +298,33 @@ public class JSONObject {
 	}
 
 
-	public Object optional( String key ) {
+	public Object opt( String key ) {
 		return ( key == null ? null : this.map.get( key ) );
 	}
 
+	public String optString( String key ){
+		return ( ( key == null ) ? ( null ) : ( (String)this.map.get( key ) ) );
+	}
+
+	public int optInt( String key ){
+		return ( ( key == null ) ? ( null ) : ( (int) this.map.get( key ) ) );
+	}
+
+	public float optFloat( String key ){
+		return ( ( key == null ) ? ( null ) : ( (float) this.map.get( key ) ) );
+	}
+
+	public double optDouble( String key ){
+		return ( ( key == null ) ? ( null ) : ( (double) this.map.get( key ) ) );
+	}
+
+	public long optLong( String key ){
+		return ( ( key == null ) ? ( null ) : ( (long) this.map.get( key ) ) );
+	}
+
+	public boolean optBoolean( String key ){
+		return ( ( key == null ) ? ( null ) : ( (boolean) this.map.get( key ) ) );
+	}
 
 	/**
 	 * remove a value from the map
