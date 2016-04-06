@@ -504,7 +504,7 @@ public class ApiMath {
 	 * @return the square root resulted rounded down if required
 	 */
 	public static int isqrt( int number ){
-		int x = 6 * power( 10, 2 );
+		int x = Integer.toString( number ).length() * power( 10, 2 );
 		int n;
 		while( true ){
 			n = ( x + ( number / x ) ) / 2;
