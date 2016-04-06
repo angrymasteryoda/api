@@ -498,5 +498,23 @@ public class ApiMath {
 		return -1;
 	}
 
+	/**
+	 * Square root by Babylonian method and rounding down
+	 * @param number number to be squared
+	 * @return the square root resulted rounded down if required
+	 */
+	public static int isqrt( int number ){
+		int x = 6 * power( 10, 2 );
+		int n;
+		while( true ){
+			n = ( x + ( number / x ) ) / 2;
+			if( n == x ){ break; }
+			if( n > x ){ break; }
+			x = n;
+		}
+		return x;
+
+	}
+
 
 }

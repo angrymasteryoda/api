@@ -69,6 +69,7 @@ public class Emailer {
 	 */
 	public void send( final JSONObject values, Properties props ) throws MessagingException, JSONException {
 		if ( props == null ) {
+			props = new Properties();
 			props.put( "mail.smtp.auth", this.props.get( "mail.smtp.auth" ) );
 			props.put( "mail.smtp.starttls.enable", this.props.get( "mail.smtp.starttls.enable" ) );
 			props.put( "mail.smtp.host", this.props.get( "mail.smtp.host" ) );
@@ -85,20 +86,30 @@ public class Emailer {
 
 		Message message = new MimeMessage( session );
 		message.setFrom( new InternetAddress( values.getString( "from" ) ) );
-		String[] to = Arrays.copyOf( values.getJSONArray( "to" ).getArray(), values.getJSONArray( "to" ).getArray().length, String[].class );
+		String[] to = new String[0];
+		try{
+			to = Arrays.copyOf( values.getJSONArray( "to" ).getArray(), values.getJSONArray( "to" ).getArray().length, String[].class );
+		} catch ( JSONException e ){}
 		for ( int i = 0; i < to.length; i++ ) {
 			if ( to[i] != null ) {
 				message.addRecipients( RecipientType.TO, InternetAddress.parse( to[i] ) );
 			}
 		}
-		String[] cc = Arrays.copyOf( values.getJSONArray( "cc" ).getArray(), values.getJSONArray( "cc" ).getArray().length, String[].class );
+
+		String[] cc = new String[0];
+		try{
+			cc = Arrays.copyOf( values.getJSONArray( "cc" ).getArray(), values.getJSONArray( "cc" ).getArray().length, String[].class );
+		} catch ( JSONException e ){}
 		for ( int i = 0; i < cc.length; i++ ) {
 			if ( !cc[i].isEmpty() ) {
 				message.setRecipients( Message.RecipientType.CC, InternetAddress.parse( cc[i] ) );
 			}
 		}
 
-		String[] bcc = Arrays.copyOf( values.getJSONArray( "bcc" ).getArray(), values.getJSONArray( "bcc" ).getArray().length, String[].class );
+		String[] bcc = new String[0];
+		try{
+			bcc = Arrays.copyOf( values.getJSONArray( "bcc" ).getArray(), values.getJSONArray( "bcc" ).getArray().length, String[].class );
+		} catch ( JSONException e ){}
 		for ( int i = 0; i < bcc.length; i++ ) {
 			if ( !bcc[i].isEmpty() ) {
 				message.setRecipients( Message.RecipientType.BCC, InternetAddress.parse( bcc[i] ) );
@@ -193,10 +204,17 @@ public class Emailer {
 				props.put( "mail.smtp.host", "smtp.yandex.com" );
 				props.put( "mail.smtp.port", "465" );
 				return true;
+			case "naver" :
+				props.put( "mail.smtp.host", "smtp.naver.com" );
+				props.put( "mail.smtp.port", "587" );
+				return true;
 			default : return false;
 		}
 	}
 
+	public static String supportedProviders(){
+		return "Gmail,Yahoo,Outlook,Aol,Zoho,Mail,Yandex,Naver";
+	}
 
 	/**
 	 * Sends email via gmail

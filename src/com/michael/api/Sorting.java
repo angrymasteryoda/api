@@ -25,6 +25,54 @@ public class Sorting {
 		}
 	}
 
+	public static <T extends Comparable<? super T > > void quickSort( T[] a, int left, int right, boolean isAscending ){
+		int leftI = left; // left scan index
+		int rightI = right; //right scan index
+//		Random rand = new Random( );
+		T pivot = a[left]; //using the leftmost as the pivot
+		while ( leftI < rightI ) { //if we havent scanned the left side all the way through yet
+			if( isAscending ){
+				while ( compare( a[leftI], pivot ) < 0 ) { //scan left side looking for index where larger than pivot
+					leftI++;
+				}
+
+				while ( compare( a[rightI], pivot ) > 0 ) { //scan right side looking for index where smaller than pivot
+					rightI--;
+				}
+			} else {
+				while ( compare( a[leftI], pivot ) > 0 ) { //scan left side looking for index where larger than pivot
+					leftI++;
+				}
+
+				while ( compare( a[rightI], pivot ) < 0 ) { //scan right side looking for index where smaller than pivot
+					rightI--;
+				}
+			}
+
+
+			if ( leftI <= rightI ) { //if the left index is smaller than we need to swap
+				swap( a, leftI, rightI );
+				leftI++;
+				rightI--;
+			}
+		}
+		if ( left < rightI ) {
+			quickSort( a, left, rightI, isAscending );
+		}
+		if ( leftI < right ) {
+			quickSort( a, leftI, right, isAscending );
+		}
+	}
+
+	private static <T extends Comparable< ? super T > > int compare( T a, T b ){
+		if ( a instanceof String ) {
+			return ( (String) a ).compareToIgnoreCase( (String) b );
+		} else{
+			return a.compareTo( b );
+		}
+	}
+
+	/*
 	public static void quickSort( int[] array, int start, int end ){
 		int i = start; //left -right scan index
 		int k = end; // right -left scan index
@@ -50,7 +98,7 @@ public class Sorting {
 			return; //its sorted
 		}
 	}
-
+*/
 	public static void bubbleSort( int[] array ){
 		boolean swap = false;
 		int len = array.length - 1;
@@ -105,6 +153,12 @@ public class Sorting {
 
 	private static void swap( int array[], int index1, int index2 ) {
 		int temp = array[index1];
+		array[index1] = array[index2];
+		array[index2] = temp;
+	}
+
+	private static <T> void swap( T array[], int index1, int index2 ) {
+		T temp = array[index1];
 		array[index1] = array[index2];
 		array[index2] = temp;
 	}

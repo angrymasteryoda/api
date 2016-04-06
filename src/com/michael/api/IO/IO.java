@@ -171,38 +171,44 @@ public class IO {
 	 */
 	public static <T extends Object> void arrayPrinter( T[] t ){
 		for (int i = 0; i < t.length; i++) {
-			System.out.println(t[i]);
+			System.out.print( t[i] + "," );
 		}
+		println();
 	}
 
 	public static void arrayPrinter( int[] t ){
 		for (int i = 0; i < t.length; i++) {
 			System.out.print(t[i] + ",");
 		}
+		println();
 	}
 
 	public static void arrayPrinter( long[] t ){
 		for (int i = 0; i < t.length; i++) {
 			System.out.print(t[i] + ",");
 		}
+		println();
 	}
 
 	public static void arrayPrinter( float[] t ){
 		for (int i = 0; i < t.length; i++) {
 			System.out.print(t[i] + ",");
 		}
+		println();
 	}
 
 	public static void arrayPrinter( double[] t ){
 		for (int i = 0; i < t.length; i++) {
 			System.out.print(t[i] + ",");
 		}
+		println();
 	}
 
 	public static void arrayPrinter( char[] t ){
 		for (int i = 0; i < t.length; i++) {
 			System.out.print(t[i] + ",");
 		}
+		println();
 	}
 
 	public static void println(){
