@@ -18,7 +18,8 @@ public class Tester {
 	public static void main( String[] args ) throws Exception {
 //		int n = 8;
 //		IO.println( Math.sqrt( n ) );
-		IO.println( ApiMath.isqrt( 8 ) );
+//		Random rand = new Random();
+//		IO.println( rand.nextInt( 2 ) );
 	}
 
 }

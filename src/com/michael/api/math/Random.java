@@ -7,7 +7,7 @@ package com.michael.api.math;
  * Time: 8:35 AM
  * To change this template use File | Settings | File Templates.
  */
-public class Random {
+public class Random extends java.util.Random {
 	private final static char[] letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".toCharArray();
 
 	/**
