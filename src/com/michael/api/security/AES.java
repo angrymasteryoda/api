@@ -28,7 +28,7 @@ public class AES {
 		Cipher c = Cipher.getInstance( ALGORITHM );
 		c.init( Cipher.ENCRYPT_MODE, key );
 		byte[] encValue = encValue = c.doFinal( plainText.getBytes() );
-		String encryptedValue = encryptedValue = new BASE64Encoder().encode( encValue );
+		String encryptedValue = Base64.encode( encValue );
 		return encryptedValue;
 	}
 
