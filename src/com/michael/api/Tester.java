@@ -3,6 +3,7 @@ package com.michael.api;
 import com.michael.api.IO.IO;
 import com.michael.api.YAML.Yaml;
 import com.michael.api.YAML.YamlList;
+import com.michael.api.YAML.YamlReader;
 import com.michael.api.json.JSONArray;
 import com.michael.api.json.JSONObject;
 
@@ -18,30 +19,30 @@ public class Tester {
 	 * final String gmail, final String pass, String[] to, String[] cc, String[] bcc, String subject, String msg, String filename
 	 */
 	public static void main( String[] args ) throws Exception {
-		Yaml yaml = new Yaml( "tester.yml" );
-		yaml.put( "prop1", true, "this is a comment" );
-		yaml.put( "prop2", 2 );
-		yaml.put( "prop3", "hello" );
-		yaml.put( "prop4", "hello world" );
-		yaml.put( "prop5", "c:/windows" );
-//		Object[] arr = {1,"test er",false};
-//		yaml.put( "list", new YamlList(arr), "list comment" );
-		YamlList yl = new YamlList();
-		yl.put( 1 );
-		yl.put( "test er" );
-		yl.put( false );
-		yaml.put( "list", yl, "list comment" );
-
-		Yaml nestGroup = new Yaml(  );
-		nestGroup.put( "g1", 1 );
-
-		Yaml nesterGroup = new Yaml(  );
-		nesterGroup.put( "g5", 1 );
-
-		nestGroup.put( "nested1", nesterGroup );
-
-		yaml.put( "nested", nestGroup );
-		yaml.write();
+//		Yaml yaml = new Yaml( "tester.yml" );
+//		yaml.put( "prop1", true, "this is a comment" );
+//		yaml.put( "prop2", 2 );
+//		yaml.put( "prop3", "hello" );
+//		yaml.put( "prop4", "hello world" );
+//		yaml.put( "prop5", "c:/windows" );
+////		Object[] arr = {1,"test er",false};
+////		yaml.put( "list", new YamlList(arr), "list comment" );
+//		YamlList yl = new YamlList();
+//		yl.put( 1 );
+//		yl.put( "test er" );
+//		yl.put( false );
+//		yaml.put( "list", yl, "list comment" );
+//
+//		Yaml nestGroup = new Yaml(  );
+//		nestGroup.put( "g1", 1 );
+//
+//		Yaml nesterGroup = new Yaml(  );
+//		nesterGroup.put( "g5", 1 );
+//
+//		nestGroup.put( "nested1", nesterGroup );
+//
+//		yaml.put( "nested", nestGroup );
+//		yaml.write();
 
 
 //		HashMap<String, Object> map = new HashMap<>();
@@ -59,6 +60,9 @@ public class Tester {
 //		array.put( "nest", ne );
 ////		array.put(  );
 //		IO.println( array );
+
+		YamlReader yr = new YamlReader( "tester.yml" );
+		yr.read();
 
 	}
 

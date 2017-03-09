@@ -151,6 +151,10 @@ public class Yaml {
 		yw.initWrite( false );
 	}
 
+	public void writeJson( String filename ){
+		YamlWritter yw = new YamlWritter( this );
+	}
+
 	public boolean hasNext(){
 		return ( keyIterator != null && keyIterator.hasNext() );
 	}
