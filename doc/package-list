@@ -1,5 +1,6 @@
 com.michael.api
 com.michael.api.IO
+com.michael.api.YAML
 com.michael.api.db
 com.michael.api.email
 com.michael.api.games
