@@ -37,11 +37,12 @@ public class Tester {
 //		nestGroup.put( "g1", 1 );
 //
 //		Yaml nesterGroup = new Yaml(  );
-//		nesterGroup.put( "g5", 1 );
+//		nesterGroup.put( "g5", 150 );
 //
 //		nestGroup.put( "nested1", nesterGroup );
 //
 //		yaml.put( "nested", nestGroup );
+//		IO.println( ( (Yaml) ( (Yaml) yaml.getValue( "nested" ) ).getValue( "nested1") ).getValue( "g5" ) );
 //		yaml.write();
 
 

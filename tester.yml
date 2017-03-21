@@ -1,8 +1,8 @@
 #this is a comment
-#prop1: true
-#prop2: 2
-#prop3: hello
-#prop4: "hello world"
+prop1: true
+prop2: 2
+prop3: hello
+prop4: "hello world"
 prop5: "c:/windows"
 #list comment
 #list:
@@ -11,5 +11,10 @@ prop5: "c:/windows"
 #  - 1
 nested:
   g1: 1
-#  nested1:
-#    g5: 1
+  nested1:
+    g5: 150
+this: is #not a comment
+comments: >
+  Late afternoon is best.
+  Backup contact is Nancy
+  Billsmer @ 338-4338.

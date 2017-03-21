@@ -10,12 +10,81 @@ import java.io.*;
 public class YamlReader {
 
 	public String filename;
+	private int YAML_INDENT_SIZE = 2;
 
 	public YamlReader( String filename ) {
 		this.filename = filename;
 	}
 
-	public void read() {
+	public void read(){
+		BufferedReader br = null;
+		Yaml empty = null; //= new Yaml( "result.yml" );
+		try{
+			br = new BufferedReader( new FileReader( filename ) );
+			empty = recursiveRead( br, empty, 0 );
+			br.close();
+		} catch ( Exception e ){
+			e.printStackTrace();
+		}
+		empty.setFilename( "result.yml" );
+		empty.write();
+	}
+
+	private Yaml recursiveRead( BufferedReader br, Yaml obj,  int level ) throws Exception{
+		if( obj == null ) obj = new Yaml(  );
+		String current;
+		String[] temp;
+		boolean isBlockText = false;
+		String blockKey = "";
+		String blockText = "";
+		while( ( current = br.readLine() ) != null ){
+			//check for level change which is my exit case
+			if( getLevel( current ) < level ) break;
+			//ignore comments
+			if( current.contains( "#" ) ){
+				current = current.split("#")[0];
+				if( current.isEmpty() ) continue;
+			}
+			//split data on the colon if it has
+			if ( current.contains( ":" ) ) {
+				temp = current.split( ":", 2 );
+				if( temp[1].isEmpty() ){ //this is a new Object here
+					Yaml nested = recursiveRead( br, null, ++level );
+					obj.put( temp[0].trim(), nested );
+					level--;
+				} else {
+					IO.print( temp[0] );
+					temp[1] = temp[1].trim();
+					if( temp[1].startsWith( ">" ) || isBlockText ){ //this is block text
+						isBlockText = true;
+						blockKey = temp[0].trim();
+					} else {
+						IO.println( " : " + temp[1]);
+						obj.put( temp[0].trim(), removeQuotes( temp[1] ) );
+					}
+				}
+			} else if ( isBlockText && !blockKey.isEmpty() ){
+				if( getLevel( current ) == level + 1 ){
+					blockText += current.trim() + " ";
+
+					int BUFFER_SIZE = 1000;
+					br.mark(BUFFER_SIZE);
+					String next = br.readLine();  // returns the GET
+					if( next == null || getLevel( next ) == level ){
+						//stop the blockText
+						isBlockText = false;
+						obj.put( blockKey, blockText.trim() );
+						blockText = "";
+						blockKey = "";
+					}
+					br.reset();     // rewinds the stream back to the mark
+				}
+			}
+		}
+		return obj;
+
+	}
+	public void readv1() {
 		//how can we check if 2 space or 4 spaced
 		BufferedReader br = null;
 		try {
@@ -85,13 +154,30 @@ public class YamlReader {
 
 	private int countSpaces( String line ){
 		int i = 0;
-		while( !isLetter( line.charAt( i ) ) ){
+		while( isSpace( line.charAt( i ) ) ){
 			i++;
 		}
 		return i;
 	}
 
-	private boolean isLetter( char l ){
-		return ( l == 32 ) ? false : true;
+	private boolean isSpace( char l ){
+		return ( l == 32 ) ? true : false;
 	}
+
+
+	private int getLevel( String line ) {
+		int i = 0;
+		while ( isSpace( line.charAt( i ) ) ) {
+			i++;
+		}
+		return i / YAML_INDENT_SIZE;
+	}
+
+	private String removeQuotes( String line ){
+		if( line.startsWith( "\"" ) && line.endsWith( "\"" ) ){
+			line = line.substring( 1, line.length()-1 );
+		}
+		return line;
+	}
+
 }

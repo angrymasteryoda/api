@@ -75,6 +75,7 @@ public class Yaml {
 		}
 		if( value != null ){
 			JSONWriter.validate( value );//TODO look at if i should move this
+			//check if putting a new
 			this.data.put( key, new YamlValue( value ) );
 		}
 		return this;
@@ -106,6 +107,13 @@ public class Yaml {
 	public YamlValue get( String key ){
 		if( data.containsKey( key ) ){
 			return data.get( key );
+		}
+		return null;
+	}
+
+	public Object getValue( String key ){
+		if( data.containsKey( key ) ){
+			return data.get( key ).getValue();
 		}
 		return null;
 	}

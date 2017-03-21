@@ -46,4 +46,8 @@ public class YamlValue {
 	public void setComment( String comment ) {
 		this.comment = comment;
 	}
+
+	public String toString(){
+		return value.toString();
+	}
 }
