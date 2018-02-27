@@ -16,7 +16,9 @@ public class YamlValue {
 	 */
 	public YamlValue( Object value, String comment ) {
 		this.value = value;
-		this.comment = comment;
+		if( !comment.isEmpty() ) {
+			this.comment = comment;
+		}
 	}
 
 	/**
