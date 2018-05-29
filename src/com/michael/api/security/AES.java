@@ -33,6 +33,23 @@ public class AES {
 	}
 
 	/**
+	 * Encrypt text using AES algorithm with a custom salt
+	 * @param plainText text to encrypt
+	 * @param salt salt to encrypt with
+	 * @return encrypted text
+	 * @throws Exception
+	 */
+	public static String encrypt( String plainText, String salt ) throws Exception {
+		byte[] keyVal = salt.getBytes();
+		Key key = generateKey( keyVal );
+		Cipher c = Cipher.getInstance( ALGORITHM );
+		c.init( Cipher.ENCRYPT_MODE, key );
+		byte[] encValue = encValue = c.doFinal( plainText.getBytes() );
+		String encryptedValue = Base64.encode( encValue );
+		return encryptedValue;
+	}
+
+	/**
 	 * Decrypt text using AES algorithm
 	 * @param encryptedText text to decrypt
 	 * @return decrypted text
@@ -40,6 +57,24 @@ public class AES {
 	 */
 	public static String decrypt( String encryptedText ) throws Exception {
 		Key key = generateKey();
+		Cipher c = Cipher.getInstance( ALGORITHM );
+		c.init( Cipher.DECRYPT_MODE, key );
+		byte[] decordedValue = new BASE64Decoder().decodeBuffer( encryptedText );
+		byte[] decValue = c.doFinal( decordedValue );
+		String decryptedValue = new String( decValue );
+		return decryptedValue;
+	}
+
+	/**
+	 * Decrypt text using AES algorithm
+	 * @param encryptedText text to decrypt
+	 * @param salt salt to encrypt with
+	 * @return decrypted text
+	 * @throws Exception
+	 */
+	public static String decrypt( String encryptedText, String salt ) throws Exception {
+		byte[] keyVal = salt.getBytes();
+		Key key = generateKey( keyVal );
 		Cipher c = Cipher.getInstance( ALGORITHM );
 		c.init( Cipher.DECRYPT_MODE, key );
 		byte[] decordedValue = new BASE64Decoder().decodeBuffer( encryptedText );
@@ -57,6 +92,11 @@ public class AES {
 	}
 
 	private static Key generateKey() throws Exception {
+		Key key = new SecretKeySpec( keyValue, ALGORITHM );
+		return key;
+	}
+
+	private static Key generateKey( byte[] keyValue ) throws Exception {
 		Key key = new SecretKeySpec( keyValue, ALGORITHM );
 		return key;
 	}

@@ -1,5 +1,8 @@
 package com.michael.api.db;
 
+import com.michael.api.IO.IO;
+import com.michael.api.security.AES;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.*;
@@ -24,16 +27,36 @@ public class MySqlDatabase {
 	 * @param fileIn
 	 * @param mode
 	 */
-	public MySqlDatabase( String fileIn, String mode ) {
-		try {
-			Properties props = readProps( fileIn );
-			this.MODE = mode;
-			this.url = props.getProperty( MODE + ".url" );
-			this.user = props.getProperty( MODE + ".user" );
-			this.password = props.getProperty( MODE + ".password" );
-		} catch ( IOException e ) {
-			e.printStackTrace();
-		}
+	public MySqlDatabase( String fileIn, String mode ) throws IOException {
+		Properties props = readProps( fileIn );
+		this.MODE = mode;
+		this.url = props.getProperty( MODE + ".url" );
+		this.user = props.getProperty( MODE + ".user" );
+		this.password = props.getProperty( MODE + ".password" );
+	}
+
+	public MySqlDatabase( String fileIn ) throws IOException{
+		Properties props = readProps( fileIn );
+		this.MODE = props.getProperty( "mode" );
+		this.url = props.getProperty( MODE + ".url" );
+		this.user = props.getProperty( MODE + ".user" );
+		this.password = props.getProperty( MODE + ".password" );
+	}
+
+	public MySqlDatabase( String fileIn, String mode, boolean isAes ) throws Exception {
+		Properties props = readProps( fileIn );
+		this.MODE = mode;
+		this.url = props.getProperty( MODE + ".url" );
+		this.user = props.getProperty( MODE + ".user" );
+		this.password = AES.decrypt( props.getProperty( MODE + ".password" ) );
+	}
+
+	public MySqlDatabase( String fileIn, boolean isAes ) throws Exception {
+		Properties props = readProps( fileIn );
+		this.MODE = props.getProperty( "mode" );
+		this.url = props.getProperty( MODE + ".url" );
+		this.user = props.getProperty( MODE + ".user" );
+		this.password = AES.decrypt( props.getProperty( MODE + ".password" ) );
 	}
 
 	public MySqlDatabase( String url, String user, String password, String mode ) {
