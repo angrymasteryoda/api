@@ -50,4 +50,8 @@ public class YamlList {
 	public int getSize(){
 		return this.array.size();
 	}
+
+	public Object[] toArray(){
+		return array.toArray();
+	}
 }

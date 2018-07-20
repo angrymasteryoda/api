@@ -16,7 +16,7 @@ public class YamlReader {
 		this.filename = filename;
 	}
 
-	public void read(){
+	public Yaml read(){
 		BufferedReader br = null;
 		Yaml empty = null; //= new Yaml( "result.yml" );
 		try{
@@ -27,8 +27,7 @@ public class YamlReader {
 		} catch ( Exception e ){
 			e.printStackTrace();
 		}
-		empty.setFilename( "result.yml" );
-		empty.write();
+		return empty;
 	}
 
 	private Yaml recursiveRead( BufferedReader br, Yaml obj,  int level ) throws Exception{

@@ -1,5 +1,6 @@
 package com.michael.api.json;
 
+import java.io.Serializable;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.concurrent.locks.Condition;
@@ -9,7 +10,7 @@ import java.util.concurrent.locks.Condition;
  * Date: 2/25/15
  * Time: 5:05 PM
  */
-public class JSONObject {
+public class JSONObject implements Serializable {
 	private final HashMap<String, Object> map;
 	public static final Object NULL = new Null();
 

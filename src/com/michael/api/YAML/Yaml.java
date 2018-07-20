@@ -154,6 +154,14 @@ public class Yaml {
 		}
 	}
 
+	public void read() {
+		YamlReader reader = new YamlReader( this.filename );
+		Yaml temp = reader.read();
+		if( temp != null ){
+			data = temp.getData();
+		}
+
+	}
 	public void write(){
 		YamlWritter yw = new YamlWritter( this );
 		yw.initWrite( false );
@@ -178,6 +186,10 @@ public class Yaml {
 
 	public void setFilename( String filename ) {
 		this.filename = filename;
+	}
+
+	public LinkedHashMap<String, YamlValue> getData() {
+		return data;
 	}
 
 	public Iterator<String> getKeyIterator() {

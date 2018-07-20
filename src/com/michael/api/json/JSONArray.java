@@ -1,5 +1,6 @@
 package com.michael.api.json;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -11,7 +12,7 @@ import java.util.Map;
  * Date: 2/26/15
  * Time: 5:22 PM
  */
-public class JSONArray {
+public class JSONArray implements Serializable{
 	private final ArrayList<Object> array;
 
 	public JSONArray() {

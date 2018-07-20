@@ -66,6 +66,12 @@ public class MySqlDatabase {
 		this.password = password;
 	}
 
+	public MySqlDatabase( String url, String user, String password, String mode, boolean isAes ) throws Exception{
+		this.MODE = mode;
+		this.url = url;
+		this.user = user;
+		this.password = AES.decrypt( password );
+	}
 	/**
 	 * Read database credentials from file
 	 *
