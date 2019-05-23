@@ -16,10 +16,10 @@ import java.util.logging.Logger;
  * Time: 8:02 PM
  */
 public class MySqlDatabase {
-	private String MODE;
-	private String url;
-	private String user;
-	private String password;
+	protected String MODE;
+	protected String url;
+	protected String user;
+	protected String password;
 
 	/**
 	 * Create Database by prop file
@@ -92,15 +92,8 @@ public class MySqlDatabase {
 	 *
 	 * @return Connection
 	 */
-	public Connection getConnection() {
-		try {
-			return DriverManager.getConnection( url, user, password );
-		} catch ( SQLException e ) {
-			Logger log = Logger.getLogger( MySqlDatabase.class.getName() );
-			log.log( Level.SEVERE, e.getMessage(), e );
-			System.exit( 2 );
-			return null;
-		}
+	public Connection getConnection() throws SQLException{
+		return DriverManager.getConnection( url, user, password );
 	}
 
 	/**
@@ -109,22 +102,18 @@ public class MySqlDatabase {
 	 * @param table name of the table to check
 	 * @return boolean
 	 */
-	public boolean checkTableExists( String table ) {
+	public boolean checkTableExists( String table ) throws SQLException{
 		Connection connection = getConnection();
 		ResultSet result = null;
-		try {
-			DatabaseMetaData meta = connection.getMetaData();
-			ResultSet res = meta.getTables( null, null, table, null );
-			if ( res.next() ) {
-				res.close();
-				connection.close();
-				return true;
-			} else {
-				res.close();
-				connection.close();
-				return false;
-			}
-		} catch ( SQLException e ) {
+		DatabaseMetaData meta = connection.getMetaData();
+		ResultSet res = meta.getTables( null, null, table, null );
+		if ( res.next() ) {
+			res.close();
+			connection.close();
+			return true;
+		} else {
+			res.close();
+			connection.close();
 			return false;
 		}
 	}
@@ -134,7 +123,7 @@ public class MySqlDatabase {
 	 * @param query string of table create query
 	 * @return true if created
 	 */
-	public boolean createTable( String query ) {
+	public boolean createTable( String query ) throws SQLException{
 		return createTable( query, false, "" );
 	}
 
@@ -145,7 +134,7 @@ public class MySqlDatabase {
 	 * @param table table name
 	 * @return
 	 */
-	public boolean createTable( String query, boolean checkFirst, String table ) {
+	public boolean createTable( String query, boolean checkFirst, String table ) throws SQLException {
 		if ( query.equals( "" ) || ( checkFirst && table.equals( "" ) ) ) {
 			return false;
 		}
